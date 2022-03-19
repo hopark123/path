@@ -36,8 +36,9 @@ function PolicyPage() {
 export function ProfileModal(props) {
 	const [page, setPage] = useState(
 		{editProfile:false, changePassword:false, terms:false, policy:false})
-	
+	const user = JSON.parse(localStorage.getItem('user')); // localstage
 	const onPages = (e) => {
+		console.log(user) //localstage
 		e.preventDefault();
 		if (page[e.target.name] == true)
 			setPage({

@@ -1,8 +1,6 @@
 import React, { useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import Login from './Login';
-
-
+import { Login } from './Login';
 
 const fetchEmail = async (email) => {
 	const response = await fetch("http://localhost:8888/user");

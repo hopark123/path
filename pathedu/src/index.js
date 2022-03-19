@@ -10,7 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(rootReducer, composeWithDevTools())
 
-console.log(store.getState()); 
+// console.log(store.getState()); 
 
 ReactDOM.render(
   <React.StrictMode>

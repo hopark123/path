@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { NavLink, Route} from 'react-router-dom'
+import { NavLink, Route, Link, Routes, Outlet} from 'react-router-dom'
 import Calendar from 'react-calendar';
 import {ProfileModal} from './ProfileModal';
 import { useSelector } from 'react-redux';
 
-function LeftPage({pageChange}) {
+function LeftPage() {
 	const [openProfile, setOpenProfile] = useState(false);
 
 	const onProfile = (e) => {
@@ -27,32 +27,41 @@ function LeftPage({pageChange}) {
 			<Calendar/>
 			<h1>PATH</h1>
 			<form name="leftPage">
-				<input type="button" name="공지" value="공지" onClick={pageChange}/><br/>
-				<input type="button" name="강좌" value="강좌" onClick={pageChange}/><br/>
-				<input type="button" name="질문" value="질문" onClick={pageChange}/><br/>
-				<input type="button" name="profile" value="사용자정보" onClick={onProfile}/><br/>
+				<Link to="noti">
+					<input type="button" name="공지" value="공지" /><br/>
+				</Link>
+				<Link to="course">
+					<input type="button" name="강좌" value="강좌" /><br/>
+				</Link>
+				<Link to="qna">
+					<input type="button" name="질문" value="질문" /><br/>
+				</Link>
+				<Link to="noti">
+					<input type="button" name="profile" value="사용자정보" onClick={onProfile}/><br/>
+				</Link>
 				<ProfileModal isOpen={openProfile} clickOpen={onProfile}/>
 			</form>
 		</>
 	)
 }
 
-
-function ClassDayPage() {
+export function ClassDayPage() {
 	return (
 		<form name="classDay">
 			classDay
 		</form>
 	)
 }
-function ClassWeekPage() {
+
+export function ClassWeekPage() {
 	return (
-		<form name="classWeek">
-			classWeek
+		<form name="classDay">
+			classDay
 		</form>
 	)
 }
-function NotificationPage() {
+
+export function NotificationPage() {
 	return (
 		<form name="noti">
 			notipage
@@ -60,7 +69,7 @@ function NotificationPage() {
 	)
 }
 
-function VodPage() {
+export function VodPage() {
 	return (
 		<form name="Vod">
 			Vodpage
@@ -68,7 +77,7 @@ function VodPage() {
 	)
 }
 
-function QnaPage() {
+export function QnaPage() {
 	return (
 		<form name="Qna">
 			QnaPage
@@ -78,24 +87,17 @@ function QnaPage() {
 
 export function Home() {
 	const [page, setPage] = useState('일')
-
-	const {data} = useSelector(state => ({ data:state.FormReducer.form}));
-
 	const pageChange = (e) => {
-		console.log({data})
-
 		e.preventDefault();
 		setPage(e.target.name)
 	}
-
+	
 	return (
 	<>
 		<LeftPage pageChange={pageChange}/> <br/>
-		{page === '일' && (<ClassDayPage/>)}
-		{page === '주' && (<ClassWeekPage/>)}
-		{page === '공지' && (<NotificationPage/>)}
-		{page === '강좌' && (<VodPage/>)}
-		{page === '질문' && (<QnaPage/>)}
+		-----------<br/>
+		<Outlet/><br/>
+		-----------<br/>
 	</>
 	);
 }

@@ -2,20 +2,31 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { reduxForm} from '../Redux/FormReducer';
+import {LayoutLoginFooter, LayoutLoginHead} from "./LayoutLogin"
 
+
+
+async function loginUser() {
+	let form = document.profile
+	let username = form.email.value
+	return fetch('https://www.mecallapi.com/api/users?search=karn', {
+	  method: 'GET`',
+	})
+	.then(data => data.json())
+}
 
 function Createuser1({form, onChange, pageChange}) {
 	return (
 	<>
 	<form name="profile">
-		<input type="email" name="email" placeholder="이메일" onChange={onChange} value={form.email}/>	<br/>
+		<input type="email" name="email" placeholder="이메일" onChange={onChange} value={form.email}/>
+			<input type="button" value="중복확인" onClick={loginUser}/> <br/>
 		<input type="password" name="password" placeholder="비밀번호(8-20)자이내" value={form.password} onChange={onChange}/>	<br/>
 		<input type="password" name="confirmPassword" placeholder="비밀번호확인" value={form.confirmPassword} onChange={onChange}/>	<br/>
 		<input type="checkbox" name="checkbox1"/> 이용약관 및 개인정보처리 방침에 동의합니다.	<br/>
 		<input type="checkbox" name="checkbox2"/> 서비스 정보 및 해택 수신에 동의합니다. (선택)	<br/>
 		<input type="button"  value="다음" onClick={pageChange}/> <br/>
 		이미 계정이 있으신가요? <Link to="/login"><button>로그인</button></Link>
-
 	</form>
 	</>
 	)
@@ -62,7 +73,7 @@ function Createuser2({form, onChange, onCreate, pageChange}) {
 }
 
 
-export function SignPages() {
+export function RegistPages() {
 	
 	const [page, setPage] = useState('start')
 	const [form, setForm] = useState({
@@ -91,10 +102,9 @@ export function SignPages() {
 			[name] : value
 		});
 	}
-	
 	const onCreate = () => {
-		let form1 = document.profile
-		if (form1.name.value == "" || form1.phone.value == "" || form1.parentPhone.value == "" || form1.nowSchool.value == "" || form1.destSchool.value == "")
+		let form = document.profile
+		if (form.name.value == "" || form.phone.value == "" || form.parentPhone.value == "" || form.nowSchool.value == "" || form.destSchool.value == "")
 			alert("빈칸이있습니다.");
 		else {
 			onReduxForm(form);
@@ -112,10 +122,13 @@ export function SignPages() {
 		else
 			setPage('end')
 	}
+	
 	return (
 	<>
+		<br/><LayoutLoginHead/><br/>
 		{page === 'start' && (<Createuser1 form={form} onChange={onChange} pageChange={pageChange}/>)}
 		{page === 'end' && (<Createuser2 form={form} onChange={onChange} onCreate={onCreate} pageChange={() => {setPage('end')}}/>)}
+		<br/><LayoutLoginFooter/><br/>
 	</>
 	);
 }
