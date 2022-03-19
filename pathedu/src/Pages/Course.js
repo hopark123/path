@@ -1,4 +1,9 @@
+import { Link, Outlet } from "react-router-dom"
+import { useState } from 'react';
 import { useAsync } from "react-async"
+import course  from "../Data/course.json"
+import coursedetail  from "../Data/coursedetail.json"
+import Modal from 'react-modal';
 
 async function getVod({myaccessToken}) {
 
@@ -11,21 +16,86 @@ async function getVod({myaccessToken}) {
 	.then(data => data.json())
 }
 
-const Vodlist = async() => {
-	const myaccessToken = localStorage.getItem("accessToken");
-	const response = await getVod({myaccessToken});
-	console.log(response)
+function VodListDetailVod(props) {
+	const name = props.vod.title
+	const day = props.vod.updatedAt
 	return (
 		<>
-			{response}
+			<div>Images</div>
+			<div> {name} </div>
+			<div> {day}</div>
+			<br/>
+			<br/>
 		</>
+	)
+
+}
+
+//강좌 인증, 받아오는거 만들어줘야함
+export function VodListDetailList(props) {
+	const vods = coursedetail.resultData.lectures
+	const [open, setOpen] = useState(true)
+
+	const modalOpen = (e) => {
+		e.preventDefault();
+		setOpen(false)
+	}
+	return (
+		<>
+		<Outlet/>
+		<Modal isOpen={open} ariaHideApp={false} name="modal">
+			<input type="button" value="X" onClick={modalOpen} name="x"/><br/>
+			{ vods &&
+			vods.map((item) => {
+			return (<VodListDetailVod vod={item} key={item.id}/>)})}
+		</Modal>
+		</>
+	)
+}
+
+function VodThumNail(props) {
+	const name = props.vod.content
+	const thumbnail = props.vod.attachments[0].fileinfo.filename
+	const url = props.vod.attachments[0].fileinfo.url
+	const count = props.vod.lectureCount
+	const vodid = props.vod.attachments[0].id
+	
+	return (
+		<>
+		/==============================\<br/>
+		<Link to = {{pathname:`${vodid}`,
+					state : {
+						vod:`${props.vod}`  ///수정 필요함
+					}}}>
+			<img src={`/images/${thumbnail}`} width="96" height="65"/><br/>
+			{count}
+		</Link>
+		<div> {name} </div>
+		\==============================/<br/>
+		</>
+	)
+}
+
+const Vodlist = async() => {
+	const myaccessToken = localStorage.getItem("accessToken");
+	const response = await getVod({myaccessToken})
+	return (
+	<>
+		{course.resultData.map((item) => {
+			return (<VodThumNail vod={item} key={item.id}/>)
+		})}
+
+		API test
+		<pre>{JSON.stringify(response, null, 1)}</pre>
+	</>
 	)
 }
 
 
 export function CoursePage() {
 	const { data, error, isLoading } = useAsync({ promiseFn : Vodlist})
-	if (isLoading) 
+
+	if (isLoading)
 		return (
 			"Loading..."
 		)
@@ -33,59 +103,10 @@ export function CoursePage() {
 	if (data)
 	  return (
 		<div>
-		  <pre>{JSON.stringify(data, null, 1)}</pre>
+			{data}
 		</div>
 	  )
 	return null
 }
 
 
-/*
-{
-    "trID": "20201123050616252363",
-    "resultCode": "200",
-    "resultMsg": "Get Course List OK",
-    "resultData": [
-				{
-		        "id": 1,
-						"ownerId": 1,
-		        "content": "수학의 정석",
-						"attachments": [
-		            {
-		                "id": 3,
-		                "fileinfo": {
-		                    "filename": "강의 섬네일1.png",
-		                    "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-		                    "smallUrl": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/small.RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-		                    "size": 19044
-		                },
-		                "attachType": "image"
-		            },
-		        ],
-				"lectureCount": 2,
-				"createdAt": "2020-11-16T09:49:25.214Z",
-		        "updatedAt": "2020-11-23T05:05:58.374Z",
-		    },
-				{
-		        "id": 2,
-						"ownerId": 1,
-		        "content": "수학2의 정석",
-						"attachments": [
-		            {
-		                "id": 5,
-		                "fileinfo": {
-		                    "filename": "강의 섬네일2.png",
-		                    "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-		                    "smallUrl": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/small.RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-		                    "size": 19044
-		                },
-		                "attachType": "image"
-		            },
-		        ],
-						"lectureCount": 2,
-						"createdAt": "2020-11-16T09:49:25.214Z",
-		        "updatedAt": "2020-11-23T05:05:58.374Z",
-		    },
-		]
-}
-*/

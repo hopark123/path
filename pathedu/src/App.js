@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Home, ClassWeekPage, NotificationPage, ClassDayPage, QnaPage,  } from "./Pages/Home"
-import { CoursePage } from "./Pages/Course"
+import { CoursePage, VodListDetailList } from "./Pages/Course"
 import { Login } from "./Pages/Login"
 import { RegistPages } from "./Pages/Regist"
 import { Password, PasswordReset } from "./Pages/Password"
@@ -21,6 +21,7 @@ return (
 				<Route path="week" element={<ClassWeekPage />}/>
 				<Route path="noti" element={<NotificationPage />}/>
 				<Route path="course" element={<CoursePage />}/>
+				<Route path="course/:courseid" element={<VodListDetailList />}/>
 				<Route path="qna" element={<QnaPage />}/>
 			</Route>
 		</Routes>

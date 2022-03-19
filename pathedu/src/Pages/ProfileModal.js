@@ -34,22 +34,15 @@ function PolicyPage() {
 }
 
 export function ProfileModal(props) {
-	const [page, setPage] = useState(
-		{editProfile:false, changePassword:false, terms:false, policy:false})
+	const [page, setPage] = useState('')
 	const user = JSON.parse(localStorage.getItem('user')); // localstage
 	const onPages = (e) => {
-		console.log(user) //localstage
+		// console.log(user) //localstage
 		e.preventDefault();
-		if (page[e.target.name] == true)
-			setPage({
-				...page,
-				[e.target.name] : false
-			})
+		if (page === e.target.name)
+			setPage(' ')
 		else
-			setPage({
-				...page,
-				[e.target.name] : true
-			})
+			setPage(e.target.name)
 	}
 
 	return (
@@ -58,13 +51,13 @@ export function ProfileModal(props) {
 			image<br/>
 			<input type="button" value="사진업로드" onClick={onPages}/><br/>
 			<input type="button" value="프로필편집" name="editProfile" onClick={onPages}/>
-			{page.editProfile === true && (<EditProfilePage/>)}<br/>
+			{page === "editProfile" === true && (<EditProfilePage/>)}<br/>
 			<input type="button" value="비밀번호변경" name="changePassword" onClick={onPages}/>
-			{page.changePassword === true && (<ChangePasswordPage/>)}<br/>
+			{page === "changePassword" === true && (<ChangePasswordPage/>)}<br/>
 			<input type="button" value="이용약관" name="terms" onClick={onPages}/>
-			{page.terms === true && (<TermsPage/>)}<br/>
+			{page === "terms" === true && (<TermsPage/>)}<br/>
 			<input type="button" value="개인정보처리방침" name="policy" onClick={onPages}/>
-			{page.policy === true && (<PolicyPage/>)}<br/>
+			{page === "policy" === true && (<PolicyPage/>)}<br/>
 			<input type="button" value="취소" onClick={props.clickOpen} name="cancel"/>
 			<input type="button" value="저장" onClick={props.clickOpen} name="save"/>
 			<input type="button" value="로그아웃"/>
