@@ -18,7 +18,6 @@ async function loginUser({username, password}) {
 export function Login() {
 	const navigate = useNavigate();
 	const [logging, setLogging] = useState({username:"", password:"",});
-
 	const onChangeAccount = (e) => {
 		setLogging({
 			...logging,

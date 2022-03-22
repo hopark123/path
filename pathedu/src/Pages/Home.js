@@ -24,7 +24,7 @@ function LeftPage() {
 	}
 	return (
 		<>
-			<Calendar/>
+			{/* <Calendar/> */}
 			<h1>PATH</h1>
 			<form name="leftPage">
 				<Link to="noti">
@@ -65,22 +65,6 @@ export function NotificationPage() {
 	return (
 		<form name="noti">
 			notipage
-		</form>
-	)
-}
-
-export function VodPage() {
-	return (
-		<form name="Vod">
-			Vodpage
-		</form>
-	)
-}
-
-export function QnaPage() {
-	return (
-		<form name="Qna">
-			QnaPage
 		</form>
 	)
 }

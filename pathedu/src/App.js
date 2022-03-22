@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Home, ClassWeekPage, NotificationPage, ClassDayPage, QnaPage,  } from "./Pages/Home"
-import { CoursePage, VodListDetailList } from "./Pages/Course"
+import { Home, ClassWeekPage, NotificationPage, ClassDayPage, } from "./Pages/Home"
+import { CoursePage } from "./Pages/Course"
+import { CourseListDetailList } from "./Pages/Course_detail"
+import { QnaPage } from "./Pages/Qna"
+
 import { Login } from "./Pages/Login"
 import { RegistPages } from "./Pages/Regist"
 import { Password, PasswordReset } from "./Pages/Password"
@@ -21,7 +24,7 @@ return (
 				<Route path="week" element={<ClassWeekPage />}/>
 				<Route path="noti" element={<NotificationPage />}/>
 				<Route path="course" element={<CoursePage />}/>
-				<Route path="course/:courseid" element={<VodListDetailList />}/>
+				<Route path="course/:courseid" element={<CourseListDetailList />}/>
 				<Route path="qna" element={<QnaPage />}/>
 			</Route>
 		</Routes>
