@@ -59,18 +59,16 @@ export function Login() {
 export default Login;
 
 /*
-async function loginUser({username, password}) {
-
-	async function loginUser({email, password}) {
-		return fetch('http://localhost:8888/user', {
-		  method: 'POST',
-		  headers: {
-			'Content-Type': 'application/json'
-		  },
-		  body: JSON.stringify({email, password})
-		})
-		  .then(data => data.json())
-	   }
+async function loginUser({email, password}) {
+	return fetch('http://localhost:8888/user', {
+		method: 'POST',
+		headers: {
+		'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({email, password})
+	})
+		.then(data => data.json())
+	}
 	
 export function Login() {
 	const navigate = useNavigate();
