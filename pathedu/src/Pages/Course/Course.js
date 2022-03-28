@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import { useAsync } from "react-async"
-import course  from "../Data/course.json"
-
+import course  from "../../Data/course.json"
 
 async function getcourse({myaccessToken}) {
 
@@ -24,6 +23,7 @@ function CourseThumNail(props) {
 	return (
 		<>
 		/==============================\<br/>
+		<Outlet/>
 		<Link to = {{pathname:`${courseid}`,
 					state : {
 						course:`${props.course}`  ///수정 필요함
