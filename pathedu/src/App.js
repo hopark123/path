@@ -35,7 +35,6 @@ return (
 				</Route>
 				<Route path="course" element={<CoursePage />}>
 					<Route path=":courseid" element={<CoureseListList />}>
-						{/* <Route path="/home/course/${:courseid}/:id" element={<CourseDetail />}/> */}
 					</Route>
 				</Route>
 				<Route path="qna" element={<QnaPage />}/>
