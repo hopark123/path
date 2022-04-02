@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom"
 import noticelist from "../../Data/noticelist.json"
 import { useAsync } from "react-async"
 import { useState } from 'react';
+import { CommentList, CreateComment} from "../../Componets/Comment"
 
 async function NotiListGet({myaccessToken}) {
 	return fetch('https://www.mecallapi.com/api/auth/user', {
@@ -14,11 +15,24 @@ async function NotiListGet({myaccessToken}) {
 	.then(data => data.json())
 }
 
-function NotiListOne(props) {
+
+function NotiAttach(props) {
 	// console.log (props.notidetaillist)
 	const filename = props.notidetaillist.fileinfo.filename
 	const fileid = props.notidetaillist.id
 	const [comments, setComment] = useState({newComment:"",});
+
+	return (
+		<>
+			{fileid} : {filename}<br/>
+		</>
+	)
+}
+
+function NotiOne(props) {
+	const head = props.noti.content
+	const [comments, setComment] = useState({newComment:"",});
+	const notiId = props.noti.id
 	
 	const onChangeComment = (e) => {
 		setComment({
@@ -32,31 +46,21 @@ function NotiListOne(props) {
 	}
 	return (
 		<>
-		<Outlet/>
-			{fileid} : {filename}<br/>
-			<Link to ={{pathname : `${fileid}`,
-						state : {
-							fileid: `${fileid}`
-						}}}>
+		/=====================\<br/>
+			head : {head} <br/>
+			{props.noti.attachments && props.noti.attachments.map((item) => {
+				return (<NotiAttach notidetaillist={item} key={item.id}/>)
+			})}
+			<Link to ={{pathname : `${notiId}`,
+			state : {
+				notiId: `${notiId}`
+			}}}>
 			더보기
 			<br/>
 			</Link>
-			comments <br/>
-			<input type="text" onChange={onChangeComment} name="newComment"/>
-			<input type="button" onClick={onComment}/> <br/>
-		</>
-	)
-}
-
-function NotiOne(props) {
-	const head = props.noti.content
-	// console.log (props.noti)
-	return (
-		<>
-			head : {head} <br/>
-			{props.noti.attachments && props.noti.attachments.map((item) => {
-				return (<NotiListOne notidetaillist={item} key={item.id}/>)
-			})}
+			<CommentList/>
+			<CreateComment/>
+			\=====================/<br/>
 		</>
 	)
 }

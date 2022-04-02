@@ -38,7 +38,6 @@ export function CoureseListList(props) {
 		<>
 		<Modal isOpen={open} ariaHideApp={false} name="modal">
 			<input type="button" value="X" onClick={modalOpen} name="x"/><br/>
-			<input type="button" value="X" onClick={modalOpen} name="x"/><br/>
 			{ courses &&	courses.map((item) => {
 				return (<CourseListDetailcourse course={item} key={item.id} setDetail={setDetail} detail={detail}/>)})}
 		</Modal>

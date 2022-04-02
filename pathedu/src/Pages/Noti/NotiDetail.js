@@ -2,6 +2,7 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import notidetail from "../../Data/notidetail.json"
+import { ModalComment, CreateComment} from "../../Componets/Comment"
 
 async function NotiDetailGet({myaccessToken}) {
 	return fetch('https://www.mecallapi.com/api/auth/user', {
@@ -75,9 +76,8 @@ export function NotiDetail(props) {
 					return (<AttachFile file={item.fileinfo} key={item.id}/>)
 			})
 			}
-			comments <br/>
-			<input type="text" onChange={onChangeComment} name="newComment"/>
-			<input type="button" onClick={onComment}/> <br/>
+			<ModalComment/>
+			<CreateComment/>
 		</Modal>
 		</>
 	)

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAsync } from "react-async"
 import { QnaList } from "./QnaList"
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function QnaPage() {
 	const { data, error, isLoading } = useAsync({ promiseFn : QnaList})

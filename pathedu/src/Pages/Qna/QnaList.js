@@ -1,5 +1,9 @@
+import { Link, Outlet } from "react-router-dom"
 import qnalist from "../../Data/qnalist.json"
 import { useState } from 'react';
+import { CommentList, CreateComment} from "../../Componets/Comment"
+import { AttachImag } from "../../Componets/Attachment"
+
 
 async function getQna({myaccessToken}) {
 	return fetch('https://www.mecallapi.com/api/auth/user', {
@@ -13,7 +17,9 @@ async function getQna({myaccessToken}) {
 
 export function QnaListOne(props) {
 	// console.log(props)
-	const content = props.qna.content
+	const qna = props.qna
+	const qnaId = qna.id
+	const attachments = qna.attachments
 	const [comments, setComment] = useState({newComment:"",});
 	const onChangeComment = (e) => {
 		setComment({
@@ -27,10 +33,17 @@ export function QnaListOne(props) {
 	}
 	return (
 	<>
-		{content} <br/>
-		comments <br/>
-		<input type="text" onChange={onChangeComment} name="newComment"/>
-		<input type="button" onClick={onComment}/> <br/>
+		{qna.id} : {qna.content} <br/>
+		<Link to ={{pathname : `${qnaId}`,
+			state : {
+				qnaId: `${qnaId}`
+			}}}>
+			더보기
+			<br/>
+		</Link>
+		<AttachImag attachments={attachments}/>
+		<CommentList/>
+		<CreateComment/>
 	</>
 	)
 }
