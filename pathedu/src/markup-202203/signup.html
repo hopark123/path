@@ -1,0 +1,91 @@
+<!Doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<title>회원가입 - PATH</title>
+		<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div class="wrapper bg-join">
+			<div id="skipNav">
+				<a href="#snContent">본문바로가기</a>
+			</div>
+			<hr />
+			<video autoplay muted loop class="bg-video">
+				<source src="images/path_bg.mp4" type="video/mp4" />
+			</video>
+			<main id="snContent">
+				<div class="login-join">
+					<h1><span>PATH</span></h1>
+					<h2>회원가입</h2>
+					<div class="join-step">
+						<strong>1</strong>
+						<span>2</span>
+					</div>
+					<fieldset>
+						<legend>로그인</legend>
+						<ul>
+							<li class="email">
+								<label for="eMail">이메일</label>
+								<input type="text" id="eMail" placeholder="이메일" />
+								<button type="button">중복확인</button>
+								<p class="desc">사용할 수 있는 이메일입니다.</p>
+							</li>
+							<li class="email">
+								<label for="eMail">이메일</label>
+								<input type="text" id="eMail" placeholder="이메일" />
+								<button type="button" disabled="disabled">중복확인</button>
+								<p class="err">이메일 형태로 입력해주세요.</p>
+							</li>
+							<li>
+								<label for="pw">비밀번호(8-20자 이내)</label>
+								<input type="password" id="pw" placeholder="비밀번호(8-20자 이내)" />
+								<button type="button" class="v-pw disb"><span>비밀번호 보기</span></button>
+								<p class="err">비밀번호는 8~20자 이내로 입력해야 합니다.</p>
+							</li>
+							<li>
+								<label for="pwN">비밀번호 확인</label>
+								<input type="password" id="pwN" placeholder="비밀번호 확인" />
+								<button type="button" class="v-pw"><span>비밀번호 숨기기</span></button>
+								<p class="err">비밀번호가 일치하지 않습니다.</p>
+							</li>
+						</ul>
+						<div class="agree">
+							<p><input type="checkbox" id="agr1" /><label for="agr1">이용약관 및 개인정보처리방침에 동의합니다.</label></p>
+							<p><input type="checkbox" id="agr2" /><label for="agr2">서비스 정보 및 혜택 수신에 동의합니다. (선택)</label></p>
+						</div>
+						<button type="button" class="btn-def">다음</button>
+					</fieldset>
+					<div class="sch">
+						<p>이미 계정이 있으신가요?</p>
+						<a href="#" class="pt">로그인</a>
+					</div>
+				</div>
+			</main>
+			<hr />
+			<footer>
+				<nav>
+					<ul>
+						<li><a href="#">회사소개</a></li>
+						<li><a href="#">이용약관</a></li>
+						<li><a href="#">개인정보처리방침</a></li>
+						<li><a href="#">고객센터</a></li>
+					</ul>
+				</nav>
+				<div class="info">
+					<div>
+						<span>주식회사 패쓰(PATH)</span>
+						<span>대표 신승학</span>
+					</div>
+					<div>
+						<span>사업자등록번호 798-87-02289</span>
+						<span>고객센터 02-566-8982</span>
+					</div>
+				</div>
+				<address>서울특별시 강남구 선릉로 305 한티KR타워 8층</address>
+				<p>Copyright © 2022 PATH inc, ltd. All rights reserved.</p>
+			</footer>
+		</div>
+	</body>
+</html>

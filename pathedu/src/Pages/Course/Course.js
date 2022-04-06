@@ -39,8 +39,7 @@ function CourseThumNail(props) {
 
 const Courselist = async() => {
 	const myaccessToken = localStorage.getItem("accessToken");
-	const response = await getcourse({myaccessToken})
-	console.log(getcourse)
+	// const response = await getcourse({myaccessToken})
 	return (
 	<>
 		{course.resultData.map((item) => {
@@ -48,7 +47,7 @@ const Courselist = async() => {
 		})}
 		=================<br/>
 		API test
-		<pre>{JSON.stringify(response, null, 1)}</pre>
+		{/* <pre>{JSON.stringify(response, null, 1)}</pre> */}
 	</>
 	)
 }

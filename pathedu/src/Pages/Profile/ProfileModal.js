@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 
-
 function EditProfilePage() {
 	return (
 	<form name="profile">
