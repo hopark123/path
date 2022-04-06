@@ -19,7 +19,7 @@ async function getComment({feedId}) {
 	.then(data => data.json())
 }
 
-export function CreateComment() {
+export function CreateCommentAttach() {
 	const [comments, setComment] = useState({newComment:"",});
 	const onChangeComment = (e) => {
 		setComment({
@@ -34,6 +34,26 @@ export function CreateComment() {
 	return (
 	<>
 		<input type="file" accept="image/*"/>
+		<input type="text" onChange={onChangeComment} name="newComment"/>
+		<input type="button" onClick={onComment}/> <br/>
+	</>
+	)
+}
+
+export function CreateComment() {
+	const [comments, setComment] = useState({newComment:"",});
+	const onChangeComment = (e) => {
+		setComment({
+			...comments,
+			[e.target.name]: e.target.value,
+		});
+	}
+	const onComment = (e) => {
+		e.preventDefault();
+		console.log(comments)
+	}
+	return (
+	<>
 		<input type="text" onChange={onChangeComment} name="newComment"/>
 		<input type="button" onClick={onComment}/> <br/>
 	</>

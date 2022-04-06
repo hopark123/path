@@ -11,6 +11,7 @@ export function Attachment (props) {
 		return (
 		<>
 			{filename}
+			<br/>
 		</>
 	)
 	else

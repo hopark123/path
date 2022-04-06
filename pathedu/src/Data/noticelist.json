@@ -1,11 +1,15 @@
 [
     {
-        "id": 1,
-				"ownerId": 1,
+        "id": "24QbW0rfP04tIdUfReOcFxKaI7",
+				"owner": {
+						"id": "24QbW0rfP04tIdUfReOcFxKaI7o",
+						"name": "이충호 선생님",
+						"profileImg": "http://profile.jpg"
+				},
         "content": "내일 기말고사입니다",
 				"attachments": [
             {
-                "id": 3,
+                "id": "24QbW0rfP04tIdUfReOcFxKaI73",
                 "fileinfo": {
                     "filename": "기말고사공지1.jpeg",
                     "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
@@ -15,7 +19,7 @@
                 "attachType": "image"
             },
             {
-                "id": 4,
+                "id": "24QbW0rfP04tIdUfReOcFxKaI8",
                 "fileinfo": {
                     "filename": "기말고사공지2.jpeg",
                     "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
@@ -25,7 +29,7 @@
                 "attachType": "image"
             },
             {
-                "id": 5,
+                "id": "24QbW0rfP04tIdUfReOcFxKaI72",
                 "fileinfo": {
                     "filename": "기말고사주의사항.pdf",
                     "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/files/2022-03-08/Udap6VdkLAJg_US-03%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB_-_%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%B2%E1%84%89%E1%85%B3%E1%84%80%E1%85%AA%E1%86%AB%E1%84%89%E1%85%B5%E1%86%B7%E1%84%89%E1%85%A1_%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.pdf",
@@ -37,8 +41,12 @@
 				"createdAt": "2020-11-16T09:49:25.214Z",
         "updatedAt": "2020-11-23T05:05:58.374Z"
     } , {
-        "id": 2,
-				"ownerId": 1,
+        "id": "24QbW0rfP04tIdUfReOcFxKaI1",
+				"owner": {
+						"id": "24QbW0rfP04tIdUfReOcFxKaI7p",
+						"name": "이충호 선생님",
+						"profileImg": "http://profile.jpg"
+				},
         "content": "이벤트 공지",
 				"createdAt": "2020-11-16T09:49:25.214Z",
         "updatedAt": "2020-11-23T05:05:58.374Z"

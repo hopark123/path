@@ -29,7 +29,6 @@ export function Home() {
 		<LeftTab/> <br/>
 		</div>
 		<div>
-			
 			<Link to="day">
 				<input type="button" name="일" value="일" />
 			</Link>

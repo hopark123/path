@@ -1,8 +1,9 @@
-import { Link, Outlet } from "react-router-dom"
 import noticelist from "../../Data/noticelist.json"
+import { Link } from "react-router-dom"
 import { useAsync } from "react-async"
 import { useState } from 'react';
 import { CommentList, CreateComment} from "../../Componets/Comment"
+import { Attachment, AttachImag } from "../../Componets/Attachment"
 
 async function NotiListGet({myaccessToken}) {
 	return fetch('https://www.mecallapi.com/api/auth/user', {
@@ -30,27 +31,19 @@ function NotiAttach(props) {
 }
 
 function NotiOne(props) {
-	const head = props.noti.content
+	const { noti } = props;
+	const head = noti.content
 	const [comments, setComment] = useState({newComment:"",});
-	const notiId = props.noti.id
-	
-	const onChangeComment = (e) => {
-		setComment({
-			...comments,
-			[e.target.name]: e.target.value,
-		});
-	}
-	const onComment = (e) => {
-		e.preventDefault();
-		console.log(comments)
-	}
+	const notiId = noti.id
+	const teacher = noti.owner.name
+
 	return (
 		<>
 		/=====================\<br/>
+			{ teacher }<br/>
 			head : {head} <br/>
-			{props.noti.attachments && props.noti.attachments.map((item) => {
-				return (<NotiAttach notidetaillist={item} key={item.id}/>)
-			})}
+			<AttachImag attachments = {noti.attachments}/>
+			<Attachment attachments = {noti.attachments}/>
 			<Link to ={{pathname : `${notiId}`,
 			state : {
 				notiId: `${notiId}`
