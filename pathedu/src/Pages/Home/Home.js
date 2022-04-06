@@ -23,7 +23,6 @@ export function MainModal({open, setOpen}) {
 
 export function Home() {
 	const [open, setOpen] = useState(false)
-	// console.log(localStorage)
 	return (
 	<div style={{ display: 'flex', flexDirection: 'row' }}>
 		<div >

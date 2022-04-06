@@ -4,7 +4,7 @@ import course  from "../../Data/course.json"
 
 async function getcourse({myaccessToken}) {
 
-	return fetch('https://www.mecallapi.com/api/auth/user', {
+	return fetch('https://dev-api.path.how/classes', {
 	  method: 'GET',
 	  headers: {
 		"Authorization": 'Bearer ' + myaccessToken
@@ -40,6 +40,7 @@ function CourseThumNail(props) {
 const Courselist = async() => {
 	const myaccessToken = localStorage.getItem("accessToken");
 	const response = await getcourse({myaccessToken})
+	console.log(getcourse)
 	return (
 	<>
 		{course.resultData.map((item) => {

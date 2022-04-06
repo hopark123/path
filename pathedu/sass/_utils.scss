@@ -1,0 +1,77 @@
+// Define breakpoints
+$breakpoints: (
+	mob: 480px,
+	tab: 768px,
+
+);
+// Create mixin
+@mixin respond-to($breakpoint) {
+  @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+
+/* var */
+$color-def: #202124;
+$color-point: #F00A6B;
+$color-brand: #F6C542;
+$color-err: #f00a6b;
+$font-def: 'Noto Sans KR','Roboto','Droid Sans','Malgun Gothic','Helvetica','Apple-Gothic','애플고딕','Tahoma',dotum,'돋움',gulim,'굴림', sans-serif;
+
+/* mixin */
+//base
+@mixin hiddenText {
+	overflow: hidden;
+    display: inline-block;
+	font-size: 1px;
+	line-height: 0;
+	text: {
+		indent: -9999px;
+		align: left;
+	}
+}
+@mixin clearfix {
+	&:after {
+		display: block;
+		content:'';
+		clear: both;
+	}
+}
+@mixin scrollN {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	&::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera*/
+	}
+}
+@mixin scrollbars (
+	$size: 16px,
+	$f-color: #7A7A7A,
+	$b-color: #FAFAFA
+) {
+	position: relative;
+	scrollbar-color: $f-color $b-color;
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+	&::-webkit-scrollbar-thumb {
+		//visibility: hidden;
+		background: $f-color;
+		border-radius: 10px;
+		border: 4px solid $b-color;
+		position: absolute;
+	}
+	&::-webkit-scrollbar-track {
+		//visibility: hidden;
+		background: $b-color;
+		outline: 1px solid rgba(0, 0, 0, 0.02);
+		position: absolute;
+	}
+	&:hover {
+		&::-webkit-scrollbar-track,
+		&::-webkit-scrollbar-thumb {
+			visibility: visible;
+		}
+	}
+}
