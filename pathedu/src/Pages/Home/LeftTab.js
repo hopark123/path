@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { NavLink, Route, Link, Routes, Outlet} from 'react-router-dom'
 import {ProfileModal} from '../Profile/ProfileModal';
-import Calendar from 'react-calendar';
-
+import { Calendar } from '../../Componets/Calendar'; 
 export function LeftTab() {
 	const [openProfile, setOpenProfile] = useState(false);
 	
 	return (
 		<>
-		{/* <Calendar /> */}
 		<h1>PATH</h1>
+		<Calendar />
 		<form name="leftPage">
 			<Link to="noti">
 				<input type="button" name="공지" value="공지" /><br/>
