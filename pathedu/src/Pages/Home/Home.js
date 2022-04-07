@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink, Route, Link, Routes, Outlet} from 'react-router-dom'
 import {LeftTab} from "./LeftTab"
 import Modal from 'react-modal';
-import { ClassDayPage } from '../Day/ClassDay';
 
 export function MainModal({open, setOpen}) {
 	const modalOpen = (e) => {
@@ -29,12 +28,7 @@ export function Home() {
 		<LeftTab/> <br/>
 		</div>
 		<div>
-			<Link to="day">
-				<input type="button" name="일" value="일" />
-			</Link>
-			<Link to="week">
-				<input type="button" name="주" value="주" /><br/>
-			</Link>
+
 			-----------<br/>
 			<Outlet/><br/>
 			-----------<br/>

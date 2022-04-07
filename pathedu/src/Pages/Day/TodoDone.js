@@ -14,7 +14,6 @@ async function getTodoDone({myaccessToken}) {
 }
 
 function TodoDoneOne(props){
-	console.log(props.Todo)
 	const id = props.Todo.id
 	const content = props.Todo.content
 	return (
