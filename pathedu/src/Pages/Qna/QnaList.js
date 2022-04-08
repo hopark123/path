@@ -1,26 +1,102 @@
 import { Link, Outlet } from "react-router-dom"
 import qnalist from "../../Data/qnalist.json"
 import { useState } from 'react';
-import { CommentList, CreateComment} from "../../Componets/Comment"
+import { CommentList, CreateComment } from "../../Componets/Comment"
 import { AttachImag } from "../../Componets/Attachment"
 
 
-async function getQna({myaccessToken}) {
+async function getQna({ myaccessToken }) {
 	return fetch('https://www.mecallapi.com/api/auth/user', {
-	  method: 'GET',
-	  headers: {
-		"Authorization": 'Bearer ' + myaccessToken
-	  }
+		method: 'GET',
+		headers: {
+			"Authorization": 'Bearer ' + myaccessToken
+		}
 	})
-	.then(data => data.json())
+		.then(data => data.json())
 }
+
+function AttachmentCnt(attachments) {
+	let imageCnt = 0;
+	if (attachments) {
+		attachments.map(item => {
+			if (item.type == "image")
+				imageCnt++;
+			})
+	}
+	return (imageCnt)
+}
+
+function QnaListBody(props) {
+	const { qna } = props
+	const content = qna.content
+	const qnaId = qna.id
+	const attachmentCnt = AttachmentCnt(qna.attachments)
+	// const ImagSrc = qna.attachment[0].thumbnails[0].url
+
+	return (
+		<>
+			<div className="q-box">
+				<p>{content}</p>
+				<div className="more">
+					<Link to={{
+						pathname: `${qnaId}`,
+						state: {
+							qnaId: `${qnaId}`
+						}
+					}}>
+						더보기
+						<br />
+					</Link>
+				</div>
+				<div className="q-img">
+					<AttachImag attachments={qna.attachments}/>
+					{/* <img src={ImagSrc} alt="" /> */}
+					<button type="button">{attachmentCnt}</button>
+				</div>
+			</div>
+		</>
+	)
+}
+
+function QnaListHead(props) {
+	const { qna } = props
+	const owner = qna.owner
+	const ownerName = owner.name
+	const onwerImg = owner.profileImg.url
+	return (
+		<>
+			<span className="new">NEW!</span>
+			<div className="hgroup">
+				<span className="photo">
+					<img src={onwerImg} alt="" />
+				</span>
+				<div className="info">
+					<em>{ownerName} <i className="n-open"><span>비공개</span></i></em>
+					<span>3월 1일</span>
+				</div>
+				<div className="add-w">
+					<button type="button"><span>추가작업</span></button>
+					<div>
+						<ul>
+							<li><a href="#">수정</a></li>
+							<li><a href="#">삭제</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</>
+
+	)
+
+}
+
 
 export function QnaListOne(props) {
 	// console.log(props)
 	const qna = props.qna
 	const qnaId = qna.id
 	const attachments = qna.attachments
-	const [comments, setComment] = useState({newComment:"",});
+	const [comments, setComment] = useState({ newComment: "", });
 	const onChangeComment = (e) => {
 		setComment({
 			...comments,
@@ -32,80 +108,25 @@ export function QnaListOne(props) {
 		console.log(comments);
 	}
 	return (
-	<>
-		{qna.id} : {qna.content} <br/>
-		<Link to ={{pathname : `${qnaId}`,
-			state : {
-				qnaId: `${qnaId}`
-			}}}>
-			더보기
-			<br/>
-		</Link>
-		<AttachImag attachments={attachments}/>
-		<CommentList/>
-		<CreateComment/>
-	</>
+		<>
+			<div className="cnts-box">
+				<QnaListHead qna={qna} />
+				<QnaListBody qna={qna} />
+				<CommentList />
+			</div>
+		</>
 	)
 }
 
-export const QnaList = async() => {
+export const QnaList = async () => {
 	const myaccessToken = localStorage.getItem("accessToken");
-	const response = await getQna({myaccessToken})
+	// const response = await getQna({ myaccessToken })
 	// console.log(qnalist)
 	return (
-	<>
-	{qnalist.map((item) => {
-		return (<QnaListOne qna={item} key={item.id}/>)
-	})}
-	</>
+		<>
+			{qnalist.map((item) => {
+				return (<QnaListOne qna={item} key={item.id} />)
+			})}
+		</>
 	)
 }
-
-/*
-[
-      {
-	        "id": 1,
-					"ownerId": 1
-	        "content": "내일 기말고사입니까?",
-					"attachments": [
-	            {
-	                "id": 3,
-	                "fileinfo": {
-	                    "filename": "질문이미지1.jpeg",
-	                    "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-	                    "smallUrl": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/small.RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-	                    "size": 19044
-	                },
-	                "attachType": "image"
-	            },
-	            {
-	                "id": 4,
-	                "fileinfo": {
-	                    "filename": "질문이미지2.jpeg",
-	                    "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-	                    "smallUrl": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/images/2022-03-08/small.RKugJfuasQnF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B2.jpeg",
-	                    "size": 19044
-	                },
-	                "attachType": "image"
-	            },
-	            {
-	                "id": 5,
-	                "fileinfo": {
-	                    "filename": "문제지.pdf",
-	                    "url": "https://cdn.path.how/dev/feed/10000017f686f22cdec9dbcebb09854002/files/2022-03-08/Udap6VdkLAJg_US-03%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB_-_%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%B2%E1%84%89%E1%85%B3%E1%84%80%E1%85%AA%E1%86%AB%E1%84%89%E1%85%B5%E1%86%B7%E1%84%89%E1%85%A1_%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1.pdf",
-	                    "size": 2945030
-	                },
-	                "attachType": "file"
-	            }
-	        ],
-					"createdAt": "2020-11-16T09:49:25.214Z",
-          "updatedAt": "2020-11-23T05:05:58.374Z",
-	    } , {
-	        "id": 2,
-					"ownerId": 1,
-	        "content": "언제 시작해요?",
-					"createdAt": "2020-11-16T09:49:25.214Z",
-          "updatedAt": "2020-11-23T05:05:58.374Z",
-	    }
- ] 
-*/

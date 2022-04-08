@@ -21,9 +21,19 @@ export function QnaPage() {
 	if (error) return `Something went wrong: ${error.message}`
 	if (data)
 	  return (
-		  <>
-		{data}
-		<input type = "button" value={"질문하기"} onClick={QnaAdd}/>
+		<>
+			<main id="snContent" className="class-w">
+					<div className="mtit">
+						<h2>질문</h2>
+					</div>
+					<div className="contents-w">
+						<div className="conts-inner type2">
+							<div className="box-wrap">
+								{data}
+							</div>
+						</div>
+					</div>
+				</main>
 		</>
 	  )
 	return null

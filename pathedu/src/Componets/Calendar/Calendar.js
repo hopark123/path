@@ -9,10 +9,10 @@ function setTodate(year, month, date) {
 
 export function Calendar() {
 	const [today, setToday] = useState(new Date())
-	var [year,setYear] = useState(today.getFullYear())
-	var [mon,setMon] = useState(today.getMonth())
+	var [year, setYear] = useState(today.getFullYear())
+	var [mon, setMon] = useState(today.getMonth())
 	var [date, setDate] = useState(today.getDate())
-	
+
 	const prevMon = (e) => {
 		e.preventDefault();
 		if (mon > 0) {
@@ -46,14 +46,12 @@ export function Calendar() {
 		setYear(today.getFullYear())
 		setMon(today.getMonth())
 		setDate(today.getDate())
-	  }, [today])
+	}, [today])
 	return (
-	<>
-	========================<br/>
-	<Head today={today} setToday={setToday} prevMon={prevMon} nextMon={nextMon}/>
-	<Body today={today} setToday={setToday} year={year} mon={mon} date={date}/>
-	<br/>
-	========================<br/>
-	</>
+		<div className="date-cho">
+			<Head today={today} setToday={setToday} prevMon={prevMon} nextMon={nextMon} />
+			<Body today={today} setToday={setToday} year={year} mon={mon} date={date} />
+			<br />
+		</div>
 	)
 }

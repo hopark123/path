@@ -4,18 +4,16 @@ export function AttachImag (props) {
 	let imageCnt = 0;
 	if (attachments) {
 		attachments.map(item => {
-			if (item.attachType == "image")
+			if (item.type == "image")
 				imageCnt++;
 				if (thumnail == "default")
-					thumnail = item.fileinfo.filename
+					thumnail = item.fileName
 			})
 	}
 	if (imageCnt)
 	return (
 	<>
-		<img thumnail={`/images/${thumnail}`} width="44" height="44"/>
-		{thumnail}
-		{imageCnt} <br/>
+		<img src={`/images/${thumnail}`} alt=""/>
 	</>
 	)
 	else

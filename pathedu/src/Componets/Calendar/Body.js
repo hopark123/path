@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function setDate(year, month, date) {
 	var res = new Date(year, month, date)
@@ -8,74 +9,93 @@ function setDate(year, month, date) {
 function WeekHead(props) {
 	return (
 		<>
-			{props.item}
+			<th scope="col">{props.item}</th>
 		</>
 	)
 }
 
 function Prevday(props) {
-	const {today, setToday, day} = props;
+	const { today, setToday, day } = props;
 	const onClick = (e) => {
 		e.preventDefault();
-		setToday(setDate(day[0],day[1],day[2]))
+		setToday(setDate(day[0], day[1], day[2]))
 	}
 	return (
-	<>
-		<input type="button" style={{"width":"32px"}} value={`${day[2]}`} onClick={onClick}/>
-	</>
+		<>
+			<td>
+				<a href="#" onClick={onClick}> {day[2]}</a>
+				{/* <input type="button" style={{ "width": "32px" }} value={`${day[2]}`} onClick={onClick} /> */}
+			</td>
+		</>
 	)
 }
 function Today(props) {
-	var day = props.day[2]
+	const { today, setToday, day } = props;
+
+	const onClick = (e) => {
+		e.preventDefault();
+		setToday(setDate(day[0], day[1], day[2]))
+	}
+
 	return (
-	<>
-		<input type="button"   style={{"width":"32px", "color":"green"}} value={`${day}`}/>
-	</>
+		<>
+			<td>
+				<a href="#" onClick={onClick} className='today' title="오늘 날짜"> {day[2]}</a>
+			</td>
+		</>
 	)
 }
 function Nextday(props) {
-	const {today, setToday, day} = props;
+	const { today, setToday, day } = props;
 	const onClick = (e) => {
 		e.preventDefault();
-		setToday(setDate(day[0],day[1],day[2]))
+		setToday(setDate(day[0], day[1], day[2]))
 	}
 	return (
-	<>
-		<input type="button" style={{"width":"32px"}} value={`${day[2]}`} onClick={onClick}/>
-	</>
+		<>
+			<td>
+				<a href="#" onClick={onClick}> {day[2]}</a>
+				{/* <input type="button" style={{ "width": "32px" }} value={`${day[2]}`} onClick={onClick} /> */}
+			</td>
+		</>
 	)
 }
 function Nowday(props) {
-	const {today, setToday, day} = props;
+	const { today, setToday, day } = props;
 	const onClick = (e) => {
 		e.preventDefault();
-		setToday(setDate(day[0],day[1],day[2]))
+		setToday(setDate(day[0], day[1], day[2]))
 	}
 	if (today && today.getDate() == day[2])
 		return (
 			<>
-			<input type="button" style={{"width":"32px" ,"color":"red"}} value={`${day[2]}`} onClick={onClick}/>
+				<td>
+					<a href="#" onClick={onClick} className="selected" title="선택한 날짜"> {day[2]}</a>
+				</td>
 			</>
 		)
 	else
 		return (
-		<>
-			<input type="button" style={{"width":"32px"}} value={`${day[2]}`} onClick={onClick}/>
-		</>
+			<>
+				<td>
+					<a onClick={onClick}> {day[2]}</a>
+					{/* <input type="button" style={{ "width": "32px" }} value={`${day[2]}`} onClick={onClick} /> */}
+				</td>
+			</>
 		)
 }
 
 function checkToday(dates) {
 	const now = new Date();
 	let year = now.getFullYear()
-	let mon  = now.getMonth()
+	let mon = now.getMonth()
 	let date = now.getDate()
 	for (let i = 0; i < 6; ++i) {
 		for (let j = 0; j < 7; ++j) {
 			if (dates[i][j] && dates[i][j][0] == year &&
-			dates[i][j][1] == mon &&
-			dates[i][j][2] == date)
-			dates[i][j][3] = 2;
+				dates[i][j][1] == mon &&
+				dates[i][j][2] == date)
+				dates[i][j][3] = 2;
 		}
 	}
 }
@@ -83,7 +103,7 @@ function checkToday(dates) {
 function makeBody(dates, today) {
 	const year = today.getFullYear()
 	const mon = today.getMonth()
-	const prevLastDate = new Date(year , mon, 0).getDate();
+	const prevLastDate = new Date(year, mon, 0).getDate();
 	const startday = new Date(year, mon, 0).getDay();
 	const lastdate = new Date(year, mon + 1, 0).getDate();
 	const lastday = new Date(year, mon + 1, 0).getDay();
@@ -110,20 +130,20 @@ function makeBody(dates, today) {
 function ViewWeek(props) {
 	const { week, setToday, today } = props;
 	return (
-	<>
-	{week.map((day) => {
-		if (day[3] == 0)
-			return (<Nowday today={today} setToday={setToday} day={day} key={day}/>)
-		else if (day[3] == -1)
-			return (<Prevday today={today} setToday={setToday} day={day} key={day}/>)
-		else if (day[3] == 1)
-			return (<Nextday today={today} setToday={setToday} day={day} key={day}/>)
-		else if (day[3] == 2)
-			return (<Today today={today} setToday={setToday} day={day} key={day}/>)
-		
-	})}
-	<br/>
-	</>
+		<>
+			<tr>
+				{week.map((day) => {
+					if (day[3] == 0)
+						return (<Nowday today={today} setToday={setToday} day={day} key={day} />)
+					else if (day[3] == -1)
+						return (<Prevday today={today} setToday={setToday} day={day} key={day} />)
+					else if (day[3] == 1)
+						return (<Nextday today={today} setToday={setToday} day={day} key={day} />)
+					else if (day[3] == 2)
+						return (<Today today={today} setToday={setToday} day={day} key={day} />)
+				})}
+			</tr>
+		</>
 	)
 }
 
@@ -131,7 +151,7 @@ function ViewWeek(props) {
 
 export function Body(props) {
 	const { today, setToday } = props;
-	
+
 	let days = ["일", "월", "화", "수", "목", "금", "토"]
 	let dates = new Array(6)
 	for (var i = 0; i < dates.length; ++i) {
@@ -140,16 +160,26 @@ export function Body(props) {
 	makeBody(dates, today)
 	useEffect(() => {
 		makeBody(dates, today)
-	},[today])
+	}, [today])
 	return (
-	<>
-		{days.map((item) => {
-			return (<WeekHead item = {item} key={item}/>)
-		})}
-		<br/>
-		{dates.map((week) => {
-			return (<ViewWeek week={week} key={week} setToday={setToday} today={today}/>)
-		})}
-	</>
+		<>
+			<div className="calendar">
+				<table>
+					<caption>강좌선택 달력</caption>
+					<thead>
+						<tr>
+							{days.map((item) => {
+								return (<WeekHead item={item} key={item} />)
+							})}
+						</tr>
+					</thead>
+					<tbody>
+						{dates.map((week) => {
+							return (<ViewWeek week={week} key={week} setToday={setToday} today={today} />)
+						})}
+					</tbody>
+				</table>
+			</div>
+		</>
 	)
 }

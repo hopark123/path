@@ -20,6 +20,7 @@ return (
 			<Route path="/login" element={<Login />} />
 			<Route path="/password" element={<PasswordPage />} />
 			<Route path="/home" element={<Home />}>
+				<Route index element={<ClassDayPage />}/>
 				<Route path="day" element={<ClassDayPage />}/>
 				<Route path="day/:id" element={<TodoDetail />}/>
 				<Route path="week" element={<ClassWeekPage />}/>
