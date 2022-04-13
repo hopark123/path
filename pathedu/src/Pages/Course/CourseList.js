@@ -1,46 +1,67 @@
-import coursedetail  from "../../Data/coursedetail.json"
-import Modal from 'react-modal';
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'
+import courselist from "../../Data/courselist.json"
+import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { CoursePage } from "./Course";
+import { useAsync } from "react-async"
 
 
 function CourseListDetailcourse(props) {
-	const name = props.course.title
-	const day = props.course.updatedAt
+	const { lecture } = props
 	return (
 		<>
-			<Link to = {{pathname : `${props.course.id}`
+			<li>
+				<Link to={{
+					pathname: `${lecture.id}`
 				}}>
-				<img src={`/images/강의 1.png`} width="44" height="44"/>
-			</Link>
-			<div> {name} </div>
-			<div> {day}</div>
-			<br/>
-			<br/>
+					<span className="thumb">
+						<img src="images/@photo.png" alt="" />
+					</span>
+					<div className="info">
+						<p>[공통] 2023 이종현 선생님 수학1 - P.12 핵심을 꿰뚫는 EBS 구문, 지문 분석으로 수능&내신 대비 2023 NEW [EBS=고수현!] 고비스 - 수특편<span className="in-new" title="새글">N</span></p>
+						<div className="d-info">
+							<span className="date"><i>날짜</i>3월 1일</span>
+							<span className="time"><i>시간</i>01:33:30</span>
+						</div>
+					</div>
+				</Link>
+			</li>
 		</>
 	)
 
 }
 
-export function CoureseListList(props) {
-	const courses = coursedetail.resultData.lectures
-	const [open, setOpen] = useState(true);
-	const [detail, setDetail] = useState();
 
+export function CourseListPage() {
+	const data = useLocation().state
+	const lectures = courselist.lectures
 	const navigate = useNavigate();
 
 	const modalOpen = (e) => {
 		e.preventDefault();
-		setOpen(false)
 		navigate("/home/course");
 	}
+	console.log(lectures)
 	return (
 		<>
-		<Modal isOpen={open} ariaHideApp={false} name="modal">
-			<input type="button" value="X" onClick={modalOpen} name="x"/><br/>
-			{ courses &&	courses.map((item) => {
-				return (<CourseListDetailcourse course={item} key={item.id} setDetail={setDetail} detail={detail}/>)})}
-		</Modal>
+			<CoursePage />
+			<div className="dimd-layer">
+				<section className="def-layer">
+					<div className="tit-w">
+						<h1>[공통] 2023 이종현 선생님 수학1 - 총 7개 강의 모음</h1>
+					</div>
+					<div className="in-cnts">
+						<div className="vod-inlist">
+							<ul>
+								{lectures && lectures.map((item) => {
+									return (<CourseListDetailcourse lecture={item} key={item.id} />)
+								})}
+							</ul>
+						</div>
+					</div>
+					<div className="btn-close">
+						<button type="button" onClick={modalOpen}><span>팝업 닫기</span></button>
+					</div>
+				</section>
+			</div>
 		</>
 	)
 }

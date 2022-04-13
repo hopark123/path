@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import validator from 'validator'
 import { Link } from 'react-router-dom';
+
 async function ServerCheckEmail(email) {
 	console.log(email)
 	const response = await fetch('https://www.mecallapi.com/api/users?search=karn', {

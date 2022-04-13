@@ -1,60 +1,63 @@
 import { Link, Outlet } from "react-router-dom"
 import { useAsync } from "react-async"
-import course  from "../../Data/course.json"
+import course from "../../Data/course.json"
 
-async function getcourse({myaccessToken}) {
+async function getcourse({ myaccessToken }) {
 
 	return fetch('https://dev-api.path.how/classes', {
-	  method: 'GET',
-	  headers: {
-		"Authorization": 'Bearer ' + myaccessToken
-	  }
+		method: 'GET',
+		headers: {
+			"Authorization": 'Bearer ' + myaccessToken
+		}
 	})
-	.then(data => data.json())
+		.then(data => data.json())
 }
 
 function CourseThumNail(props) {
-	const name = props.course.content
-	const thumbnail = props.course.attachments[0].fileinfo.filename
-	const url = props.course.attachments[0].fileinfo.url
-	const count = props.course.lectureCount
-	const courseid = props.course.attachments[0].id
-	
+	const { course } = props
+	const name = course.title
+	const thumbnail = course.attachment.thumbnails[0].url
+	// const url = props.course.attachments[0].fileinfo.url
+	const count = course.lectureCount
+	const courseid = course.id
 	return (
 		<>
-		/==============================\<br/>
-		<Outlet/>
-		<Link to = {{pathname:`${courseid}`,
-					state : {
-						course:`${props.course}`  ///수정 필요함
-					}}}>
-			<img src={`/images/${thumbnail}`} width="96" height="65"/><br/>
-			{count}
-		</Link>
-		<div> {name} </div>
-		\==============================/<br/>
+			<li>
+				<Link to={{
+					pathname: `${courseid}`,
+					state: {
+						course: course
+					}
+				}}>
+					<span className="new">NEW!</span>
+					<div className="photo">
+						<img src={`${thumbnail}`} alt="" />
+						<div><i>강좌갯수</i><span>{count}</span></div>
+					</div>
+					<p>{name}</p>
+				</Link>
+			</li>
 		</>
 	)
 }
 
-const Courselist = async() => {
+const Courselist = async () => {
 	const myaccessToken = localStorage.getItem("accessToken");
 	// const response = await getcourse({myaccessToken})
 	return (
-	<>
-		{course.resultData.map((item) => {
-			return (<CourseThumNail course={item} key={item.id}/>)
-		})}
-		=================<br/>
-		API test
-		{/* <pre>{JSON.stringify(response, null, 1)}</pre> */}
-	</>
+		<>
+			<ul>
+				{course.map((item) => {
+					return (<CourseThumNail course={item} key={item.id} />)
+				})}
+			</ul>
+		</>
 	)
 }
 
 
 export function CoursePage() {
-	const { data, error, isLoading } = useAsync({ promiseFn : Courselist})
+	const { data, error, isLoading } = useAsync({ promiseFn: Courselist })
 
 	if (isLoading)
 		return (
@@ -62,11 +65,22 @@ export function CoursePage() {
 		)
 	if (error) return `Something went wrong: ${error.message}`
 	if (data)
-	  return (
-		<div>
-			{data}
-		</div>
-	  )
+		return (
+			<>
+				<main id="snContent" className="class-w">
+					<div className="mtit">
+						<h2>강좌</h2>
+					</div>
+					<div className="contents-w">
+						<div className="conts-inner">
+							<div className="vod-list">
+								{data}
+							</div>
+						</div>
+					</div>
+				</main>
+			</>
+		)
 	return null
 }
 

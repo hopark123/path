@@ -1,0 +1,42 @@
+{
+    "id": "27QOAG8Ax7LdSQyQyWwucelZNZ4",
+    "ownerId": 1,
+    "title": "수학의 정석",
+    "lectureCount": 3,
+    "attachment": {
+        "id": "24QbW0rfP04tIdUfReOcFxKaI7",
+        "fileName": "수학의 정석.jpg",
+        "url": "https://image.yes24.com/goods/37525992/XL",
+        "width": 288,
+        "height": 288,
+        "size": 19044,
+        "type": "image",
+        "thumbnails": [
+            {
+                "url": "https://image.yes24.com/goods/37525992/L",
+                "type": "large"
+            },
+            {
+                "url": "https://image.yes24.com/goods/37525992/S",
+                "type": "small"
+            }
+        ]
+    },
+    "lectures": [
+        {
+            "id": "27QOAIQc59OWSsPE89NwhlbAvnW",
+            "title": "수학의 정석 제1강",
+            "vodPlayInfo": null
+        },
+        {
+            "id": "27QOACgP67KBMD3HSe2JmzZTr0l",
+            "title": "수학의 정석 제2강",
+            "vodPlayInfo": null
+        },
+        {
+            "id": "27QOAGlm6Pcu5zg7VUn80cbXFEQ",
+            "title": "수학의 정석 제3강",
+            "vodPlayInfo": null
+        }
+    ]
+}

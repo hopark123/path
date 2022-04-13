@@ -1,0 +1,71 @@
+{
+    "id": "24QbW0rfP04tIdUfReOcFxKaI7",
+		"owner": {
+				"id": "24QbW0rfP04tIdUfReOcFxKaI7o",
+				"name": "김지민 학생",
+				"profileImg": {
+			        "id": "24QbW0rfP04tIdUfReOcFxKaI7",
+			        "fileName": "질문 이미지 1.jpg",
+			        "url": "https://image.yes24.com/goods/37525992/XL",
+			        "width": 288,
+			        "height": 288,
+			        "size": 19044,
+			        "type": "image",
+			        "thumbnails": [
+			            {
+			                "url": "https://image.yes24.com/goods/37525992/L",
+			                "type": "large"
+			            },
+			            {
+			                "url": "https://image.yes24.com/goods/37525992/S",
+			                "type": "small"
+			            }
+			        ]
+			    }
+		},
+    "content": "이거 어떻게 풀어요?",
+		"commentCount": 5,
+		"readTeacherOnly": true,
+		"attachments": [
+        {
+		        "id": "24QbW0rfP04tIdUfReOcFxKaI7",
+		        "fileName": "질문 이미지 1.jpg",
+		        "url": "https://image.yes24.com/goods/37525992/XL",
+		        "width": 288,
+		        "height": 288,
+		        "size": 19044,
+		        "type": "image",
+		        "thumbnails": [
+		            {
+		                "url": "https://image.yes24.com/goods/37525992/L",
+		                "type": "large"
+		            },
+		            {
+		                "url": "https://image.yes24.com/goods/37525992/S",
+		                "type": "small"
+		            }
+		        ]
+		    },
+        {
+		        "id": "24QbW0rfP04tIdUfReOcFxKaI7",
+		        "fileName": "질문 이미지 2.jpg",
+		        "url": "https://image.yes24.com/goods/37525992/XL",
+		        "width": 288,
+		        "height": 288,
+		        "size": 19044,
+		        "type": "image",
+		        "thumbnails": [
+		            {
+		                "url": "https://image.yes24.com/goods/37525992/L",
+		                "type": "large"
+		            },
+		            {
+		                "url": "https://image.yes24.com/goods/37525992/S",
+		                "type": "small"
+		            }
+		        ]
+		    }
+		],
+		"createdAt": "2020-11-16T09:49:25.214Z",
+    "updatedAt": "2020-11-23T05:05:58.374Z"
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Head } from "./Head"
 import { Body } from './Body';
+import validator from 'validator'
+import { Link, useParams } from 'react-router-dom';
 
 function setTodate(year, month, date) {
 	var res = new Date(year, month, date)
@@ -13,6 +15,8 @@ export function Calendar() {
 	var [mon, setMon] = useState(today.getMonth())
 	var [date, setDate] = useState(today.getDate())
 
+	
+	const urlDay = useParams().dayid
 	const prevMon = (e) => {
 		e.preventDefault();
 		if (mon > 0) {
@@ -41,12 +45,33 @@ export function Calendar() {
 		setDate(1)
 	}
 
+	const nextDay = (e) => {
+		e.preventDefault();
+		if (mon < 11) {
+			setMon(mon + 1)
+			setToday(setTodate(year, mon + 1, 1))
+		}
+		else {
+			setYear(year + 1)
+			setMon(0)
+			setToday(setTodate(year + 1, 0, 1))
+		}
+		setDate(1)
+	}
+
 	useEffect(() => {
-		console.log(today)
+		const urlDays = new Date(urlDay)
+		if (validator.isDate(urlDays)) {
+			setToday(urlDays)
+		}
+	},[urlDay])
+
+	useEffect(() => {
 		setYear(today.getFullYear())
 		setMon(today.getMonth())
 		setDate(today.getDate())
 	}, [today])
+
 	return (
 		<div className="date-cho">
 			<Head today={today} setToday={setToday} prevMon={prevMon} nextMon={nextMon} />

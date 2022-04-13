@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function setDate(year, month, date) {
 	var res = new Date(year, month, date)
@@ -14,7 +14,7 @@ function WeekHead(props) {
 	)
 }
 
-function Prevday(props) {
+function PrevMonth(props) {
 	const { today, setToday, day } = props;
 	const onClick = (e) => {
 		e.preventDefault();
@@ -23,13 +23,13 @@ function Prevday(props) {
 	return (
 		<>
 			<td>
-				<a href="#" onClick={onClick}> {day[2]}</a>
-				{/* <input type="button" style={{ "width": "32px" }} value={`${day[2]}`} onClick={onClick} /> */}
+				{/* <a href="#" onClick={onClick}> {day[2]}</a> */}
+				{day[2]}
 			</td>
 		</>
 	)
 }
-function Today(props) {
+function TodayMonth(props) {
 	const { today, setToday, day } = props;
 
 	const onClick = (e) => {
@@ -45,7 +45,7 @@ function Today(props) {
 		</>
 	)
 }
-function Nextday(props) {
+function NextMonth(props) {
 	const { today, setToday, day } = props;
 	const onClick = (e) => {
 		e.preventDefault();
@@ -54,8 +54,8 @@ function Nextday(props) {
 	return (
 		<>
 			<td>
-				<a href="#" onClick={onClick}> {day[2]}</a>
-				{/* <input type="button" style={{ "width": "32px" }} value={`${day[2]}`} onClick={onClick} /> */}
+				{/* <a href="#" onClick={onClick}> {day[2]}</a> */}
+				{day[2]}
 			</td>
 		</>
 	)
@@ -70,7 +70,7 @@ function Nowday(props) {
 		return (
 			<>
 				<td>
-					<a href="#" onClick={onClick} className="selected" title="선택한 날짜"> {day[2]}</a>
+					<a onClick={onClick} className="selected" title="선택한 날짜"> {day[2]}</a>
 				</td>
 			</>
 		)
@@ -79,7 +79,6 @@ function Nowday(props) {
 			<>
 				<td>
 					<a onClick={onClick}> {day[2]}</a>
-					{/* <input type="button" style={{ "width": "32px" }} value={`${day[2]}`} onClick={onClick} /> */}
 				</td>
 			</>
 		)
@@ -100,7 +99,7 @@ function checkToday(dates) {
 	}
 }
 
-function makeBody(dates, today) {
+function MakeBody(dates, today) {
 	const year = today.getFullYear()
 	const mon = today.getMonth()
 	const prevLastDate = new Date(year, mon, 0).getDate();
@@ -136,11 +135,11 @@ function ViewWeek(props) {
 					if (day[3] == 0)
 						return (<Nowday today={today} setToday={setToday} day={day} key={day} />)
 					else if (day[3] == -1)
-						return (<Prevday today={today} setToday={setToday} day={day} key={day} />)
+						return (<PrevMonth today={today} setToday={setToday} day={day} key={day} />)
 					else if (day[3] == 1)
-						return (<Nextday today={today} setToday={setToday} day={day} key={day} />)
+						return (<NextMonth today={today} setToday={setToday} day={day} key={day} />)
 					else if (day[3] == 2)
-						return (<Today today={today} setToday={setToday} day={day} key={day} />)
+						return (<TodayMonth today={today} setToday={setToday} day={day} key={day} />)
 				})}
 			</tr>
 		</>
@@ -148,19 +147,30 @@ function ViewWeek(props) {
 }
 
 
-
 export function Body(props) {
 	const { today, setToday } = props;
-
+	const navigate = useNavigate();
 	let days = ["일", "월", "화", "수", "목", "금", "토"]
 	let dates = new Array(6)
 	for (var i = 0; i < dates.length; ++i) {
 		dates[i] = new Array(7);
 	}
-	makeBody(dates, today)
+
+	MakeBody(dates, today)
 	useEffect(() => {
-		makeBody(dates, today)
+		MakeBody(dates, today)
+		navigate(`/home/day/${today}`,
+		{
+			state : {
+				year : today.getFullYear(),
+				month : today.getMonth(),
+				date : today.getDate(),
+				day : today.getDay(),
+			}
+		}
+		)
 	}, [today])
+
 	return (
 		<>
 			<div className="calendar">

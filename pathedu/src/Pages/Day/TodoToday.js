@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useAsync } from "react-async"
 import todolist from "../../Data/todolist.json"
 
@@ -20,7 +20,7 @@ function TodoOne(props) {
 		<>
 			<div className="todo-card">
 				<Link to={{
-					pathname: `${id}`,
+					pathname: `/home/todo/${id}`,
 					state: {
 						todo: "a" //TODO
 					}
@@ -63,9 +63,10 @@ const TodoList = async () => {
 		</>
 	)
 }
-export function TodoToday() {
+export function TodoToday(props) {
 	const { data, error, isLoading } = useAsync({ promiseFn: TodoList })
-
+	// const today = useParams()
+	// console.log(today)
 	if (isLoading)
 		return (
 			"Loading..."

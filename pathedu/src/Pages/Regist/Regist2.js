@@ -10,7 +10,7 @@ async function serverRegist(form) {
 		method: 'POST`',
 		body: JSON.stringify({ form })
 	})
-		.then(data => data.json())
+	.then(data => data.json())
 }
 
 export function Registuser2({ profile, makeProfile, setProfile, pageChange }) {
@@ -57,7 +57,6 @@ export function Registuser2({ profile, makeProfile, setProfile, pageChange }) {
 	const onCreate = async () => {
 		let form = document.profile
 		onReduxForm(form);
-		console.log(checkform())
 		if (checkform()) {
 			const response = await serverRegist(profile);
 			if ('id' in response) { //TODO response 제대로

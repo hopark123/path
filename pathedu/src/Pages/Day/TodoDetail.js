@@ -1,4 +1,3 @@
-import Modal from 'react-modal';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -15,9 +14,6 @@ export function TodoDetail () {
 	}
 	return (
 		<>
-		<Modal isOpen={open} ariaHideApp={false} name="modal">
-			<input type="button" value="X" onClick={modalOpen} name="x"/><br/>
-		</Modal>
 		</>
 	)
 }

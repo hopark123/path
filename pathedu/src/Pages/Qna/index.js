@@ -1,5 +1,6 @@
 import { QnaPage } from "./Qna"
 import { QnaOneDetail } from "./QnaDetail"
-import { QnaAdd} from "./QnaAdd"
+import { QnaWrite } from "./QnaWrite"
+import { QnaDetailChat } from "./QnaDetailChat"
 
-export { QnaAdd, QnaOneDetail, QnaPage };
+export { QnaWrite, QnaOneDetail, QnaPage, QnaDetailChat };

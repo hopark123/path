@@ -2,7 +2,6 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom'
 import notidetail from "../../Data/notidetail.json"
-import { ModalComment, CreateComment } from "../../Componets/Comment"
 import { NotiPage } from './NotiPage';
 import Moment from "react-moment"
 import { NotiDetailChat } from "./NotiDetailChat"
@@ -16,11 +15,11 @@ async function NotiDetailGet({ myaccessToken }) {
 	})
 		.then(data => data.json())
 }
-function NotiBody(props) {
+function NotiDetailBody(props) {
 	const { notidetail } = props
 	const content = notidetail.content
 	return (
-		<div class="q-box">
+		<div className="q-box">
 			<p>{content}</p>
 		</div>
 	)
@@ -28,8 +27,8 @@ function NotiBody(props) {
 
 function NotiDetailHead(props) {
 	const { notidetail } = props
-	const [seconds, setSeconds] = useState(Date.now());
 	const owner = notidetail.owner
+	const [seconds, setSeconds] = useState(Date.now());
 	const createTime = new Date(notidetail.createdAt);
 	const nowTime = new Date(seconds);
 	let form;
@@ -66,24 +65,11 @@ export function NotiDetail(props) {
 	const navigate = useNavigate();
 	const myaccessToken = localStorage.getItem("accessToken");
 	// const response = NotiDetailGet({myaccessToken})
-	const attachments = notidetail.attachments
-	const title = notidetail.content
-	const [comments, setComment] = useState({ newComment: "", });
 	const modalOpen = (e) => {
 		e.preventDefault();
 		navigate("/home/noti");
 	}
 
-	const onChangeComment = (e) => {
-		setComment({
-			...comments,
-			[e.target.name]: e.target.value,
-		});
-	}
-	const onComment = (e) => {
-		e.preventDefault();
-		console.log(comments)
-	}
 	return (
 		<>
 			<main id="snContent" className="class-w">
@@ -96,7 +82,7 @@ export function NotiDetail(props) {
 						<div className="in-chat">
 							<div className="ques-box">
 								<NotiDetailHead notidetail={notidetail} />
-								<NotiBody notidetail={notidetail}/>
+								<NotiDetailBody notidetail={notidetail}/>
 							</div>
 							<NotiDetailChat notidetail={notidetail}/>
 						</div>
@@ -109,23 +95,3 @@ export function NotiDetail(props) {
 		</>
 	)
 }
-/*
-	<Modal isOpen={open} ariaHideApp={false} name="modal">
-		<input type="button" value="X" onClick={modalOpen} name="x" /><br />
-		선생님 이름<br />
-		==================<br />
-		공지사항 입니다~~~!!<br />
-		{attachments.map((item) => {
-			if (item && item.attachType == "image")
-				return (<Images images={item} key={item.id} />)
-		})
-		}
-		{attachments.map((item) => {
-			if (item && item.attachType != "image")
-				return (<AttachFile file={item} key={item.id} />)
-		})
-		}
-		<ModalComment />
-		<CreateComment />
-	</Modal>
-*/

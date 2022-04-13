@@ -27,7 +27,6 @@ export function Login() {
 	const navigate = useNavigate();
 	const [logging, setLogging] = useState({ username: "", password: "", });
 
-
 	const onChangeAccount = (e) => {
 		setLogging({
 			...logging,
@@ -71,8 +70,9 @@ export function Login() {
 							</Link>
 						</div>
 					</div>
-				</main>	
-				<br /><LayoutLoginFooter /><br />
+				</main>
+				<hr/>
+				<LayoutLoginFooter />
 			</div>
 		</>
 	);

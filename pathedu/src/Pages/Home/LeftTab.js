@@ -1,14 +1,43 @@
 import { useState } from 'react';
-import { NavLink, Route, Link, Routes, Outlet } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { ProfileModal } from '../Profile/ProfileModal';
 import { Calendar } from '../../Componets/Calendar';
 export function LeftTab() {
 	const [openProfile, setOpenProfile] = useState(false);
+	const today = new Date()
+	const navigate = useNavigate();
+
+	const onPath = (e) => {
+		e.preventDefault()
+		navigate(`/home/day/${today}`,
+			{
+				state: {
+					year: today.getFullYear(),
+					month: today.getMonth(),
+					date: today.getDate(),
+					day: today.getDay(),
+				}
+			})
+	}
 
 	return (
 		<>
 			<div className="def-side">
-				<h1><a href="#"><span>PATH</span></a></h1>
+				<h1>
+					<Link to={{
+						pathname: `/home/day/${today}`,
+						state: {
+							year: today.getFullYear(),
+							month: today.getMonth(),
+							date: today.getDate(),
+							day: today.getDay()
+						}
+					}} >
+						<span>
+							PATH
+						</span>
+					</Link>
+				</h1>
 				<div className="t-info">
 					<div className="photo">
 						<img src="images/@photo.png" alt="" />
@@ -46,7 +75,7 @@ export function LeftTab() {
 						<em>송예나</em>
 						<span>yesme@path.how</span>
 					</div>
-					<Link to=""className="sett" name="profile" value="사용자정보" onClick={() => { setOpenProfile(true) }}>
+					<Link to="" className="sett" name="profile" value="사용자정보" onClick={() => { setOpenProfile(true) }}>
 						<span>
 							설정
 						</span>

@@ -32,7 +32,7 @@ export function Home() {
 				<div className="mobile-m">
 					<button type="button"><span>메뉴열림</span></button>
 					<div className="profile">
-						<a href="#"><span><img src="images/@photo.png" alt="프로필" /></span></a>
+						<a href="aa"><span><img src="images/@photo.png" alt="프로필" /></span></a>
 					</div>
 				</div>
 				<LeftTab />
