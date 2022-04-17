@@ -20,12 +20,10 @@ function TodoDoneOne(props) {
 		<>
 			<div className="todo-card end-todo">
 
-				<Link to={{
-					pathname: `${id}`,
-					state: {
+				<Link to={`${id}`}
+					state={{
 						todo: "a" //TODO
-					}
-				}}>
+					}}>
 					<div className="info">
 						<div className="cate">
 							<span className="c-te">시험</span>

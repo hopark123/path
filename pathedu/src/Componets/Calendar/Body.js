@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 
 function setDate(year, month, date) {
@@ -16,10 +17,6 @@ function WeekHead(props) {
 
 function PrevMonth(props) {
 	const { today, setToday, day } = props;
-	const onClick = (e) => {
-		e.preventDefault();
-		setToday(setDate(day[0], day[1], day[2]))
-	}
 	return (
 		<>
 			<td>
@@ -29,12 +26,13 @@ function PrevMonth(props) {
 		</>
 	)
 }
-function TodayMonth(props) {
+function Today(props) {
 	const { today, setToday, day } = props;
 
 	const onClick = (e) => {
 		e.preventDefault();
 		setToday(setDate(day[0], day[1], day[2]))
+		
 	}
 
 	return (
@@ -60,11 +58,24 @@ function NextMonth(props) {
 		</>
 	)
 }
-function Nowday(props) {
+function NowMonth(props) {
 	const { today, setToday, day } = props;
+	const navigate = useNavigate();
 	const onClick = (e) => {
 		e.preventDefault();
-		setToday(setDate(day[0], day[1], day[2]))
+		// setToday(setDate(day[0], day[1], day[2]))
+		const newDay = new Date(day[0], day[1], day[2])
+		console.log("here" + newDay)
+		navigate('',
+			{
+				state: {
+					year: newDay.getFullYear(),
+					month: newDay.getMonth(),
+					date: newDay.getDate(),
+					day: newDay.getDay()
+				}
+			}
+		)
 	}
 	if (today && today.getDate() == day[2])
 		return (
@@ -133,13 +144,13 @@ function ViewWeek(props) {
 			<tr>
 				{week.map((day) => {
 					if (day[3] == 0)
-						return (<Nowday today={today} setToday={setToday} day={day} key={day} />)
+						return (<NowMonth today={today} setToday={setToday} day={day} key={day} />)
 					else if (day[3] == -1)
 						return (<PrevMonth today={today} setToday={setToday} day={day} key={day} />)
 					else if (day[3] == 1)
 						return (<NextMonth today={today} setToday={setToday} day={day} key={day} />)
 					else if (day[3] == 2)
-						return (<TodayMonth today={today} setToday={setToday} day={day} key={day} />)
+						return (<Today today={today} setToday={setToday} day={day} key={day} />)
 				})}
 			</tr>
 		</>
@@ -150,26 +161,24 @@ function ViewWeek(props) {
 export function Body(props) {
 	const { today, setToday } = props;
 	const navigate = useNavigate();
+	// let dayObj = useLocation().state
+	// console.log(dayObj)
 	let days = ["일", "월", "화", "수", "목", "금", "토"]
 	let dates = new Array(6)
 	for (var i = 0; i < dates.length; ++i) {
 		dates[i] = new Array(7);
 	}
-
 	MakeBody(dates, today)
-	useEffect(() => {
-		MakeBody(dates, today)
-		navigate(`/home/day/${today}`,
-		{
-			state : {
-				year : today.getFullYear(),
-				month : today.getMonth(),
-				date : today.getDate(),
-				day : today.getDay(),
-			}
-		}
-		)
-	}, [today])
+	// navigate(``,
+	// {
+	// 	state : {
+	// 		year : today.getFullYear(),
+	// 		month : today.getMonth(),
+	// 		date : today.getDate(),
+	// 		day : today.getDay(),
+	// 	}
+	// }
+	// )
 
 	return (
 		<>

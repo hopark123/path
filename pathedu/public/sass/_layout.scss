@@ -78,7 +78,7 @@
 		}
 		.profile {
 			position: absolute;
-			top: 9px;
+			top: 11px;
 			right: 16px;
 			a {
 				overflow: hidden;
@@ -218,14 +218,19 @@
 							transform: rotate(180deg);
 						}
 					}
+					&:hover {
+						background-color: #ECF0F2;
+					}
 				}
 			}
 		}
 		.calendar {
 			margin-top: 5px;
 			table {
+				//border-collapse: collapse;
 				font-size: 12px;
 				text-align: center;
+				border-spacing: 0 4px;
 				th {
 					height: 26px;
 					color: #b9b9b9;
@@ -239,6 +244,7 @@
 						justify-content: center;
 						width: 26px;
 						height: 26px;
+						//margin: 2px 0;
 						border-radius: 50%;
 						&.today {
 							border: 1px solid $color-point;
@@ -246,6 +252,21 @@
 						&.selected {
 							background: $color-point;
 							color: #fff;
+						}
+					}
+				}
+				tr.selected {
+					td {
+						background: $color-point;
+						color: #fff;
+						a {
+							color: #fff;
+						}
+						&:first-child {
+							border-radius: 17px 0 0 17px;
+						}
+						&:last-child {
+							border-radius: 0 13px 13px 0;
 						}
 					}
 				}
@@ -258,13 +279,14 @@
 			border-bottom: 1px solid #ebeded;
 			li {
 				position: relative;
+				padding: 10px 0;
 				border-top: 1px solid #ebeded;
 				&:after {
 					content: '';
 					display: block;
 					position: absolute;
 					top: calc(50% - 4px);
-					right: 0;
+					right: 10px;
 					width: 8px;
 					height: 8px;
 					border: {
@@ -278,7 +300,8 @@
 				a {
 					display: flex;
 					align-items: center;
-					height: 60px;
+					height: 40px;
+					padding: 0 10px;
 					font-weight: bold;
 					&:before {
 						content: '\1F4E2';
@@ -293,6 +316,9 @@
 						&:before {
 							content: '\1F4AC';
 						}
+					}
+					&:hover {
+						background-color: rgba($color: #ECF0F2, $alpha: 0.4);
 					}
 				}
 				&.selected {
@@ -390,7 +416,7 @@ main {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		max-width: calc(1135px - 250px);
+		max-width: 1130px;
 		height: 100%;
 		font-size: 16px;
 	}
@@ -411,7 +437,9 @@ main {
 			position: relative;
 			padding: 0 32px;
 			strong {
+				display: block;
 				font-size: 16px;
+				text-align: center;
 			}
 			button {
 				position: absolute;
@@ -442,12 +470,16 @@ main {
 						transform: rotate(180deg);
 					}
 				}
+				&:hover {
+					background-color: #ebeded;
+				}
 			}
 		}
 		.cho-wd {
 			overflow: hidden;
 			display: flex;
 			border-radius: 8px;
+			margin-left: 10px;
 			a {
 				display: flex;
 				align-items: center;
@@ -464,6 +496,7 @@ main {
 		}
 	}
 	@include respond-to(tab) {
+		height: 52px;
 		.class-top {
 			> p {
 				display: none;
@@ -486,10 +519,13 @@ main {
 .contents-w {
 	@include scrollbars;
 	overflow: auto;
+	height: 100%;
 	.conts-inner {
-		width: 1130px;
+		display: flex;
+		flex-direction: column;
+		max-width: 1130px;
+		min-height: calc(100vh - 65px);
 		padding: 30px;
-		padding-right: 0;
 		padding-bottom: 0;
 		box-sizing: border-box;
 	}
@@ -510,13 +546,18 @@ main {
 	flex-direction: column;
 	min-height: calc(100vh - 65px);
 	background: #fff;
-	footer {
-		max-width: 1146px;
-	}
 	@include respond-to(mob) {
         overflow: hidden;
 		//min-height: 100%;
 		//height: calc(100vh - 45px);
+	}
+}
+.class-inner,
+.conts-inner {
+	footer {
+		margin-top: auto;
+		padding-top: 50px;
+		max-width: 1146px;
 	}
 }
 footer {
@@ -552,25 +593,25 @@ footer {
 		display: flex;
 		margin-top: 15px;
 		justify-content: center;
-		> div {
-			span {
-				display: inline-flex;
-				&:before {
-					content: '|';
-					margin: 0 3px;
-					font-size: 12px;
-				}
+		span {
+			display: inline-flex;
+			&:before {
+				content: '|';
+				margin: 0 3px;
+				font-size: 12px;
 			}
+		}
+		> div:first-child > span,
+		> span {
 			&:first-child {
-				span {
-					&:first-child {
-						&:before {
-							display: none;
-						}
-					}
+				&:before {
+					display: none;
 				}
 			}
 		}
+	}
+	address + .info {
+		margin-top: 0;
 	}
 	@include respond-to(mob) {
 		nav {

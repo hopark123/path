@@ -1,0 +1,119 @@
+[
+	[
+		{
+			"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"originId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"userId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"curriculumId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"isEssential": true,
+			"title": "배치고사1-1",
+			"content": "다함께 메타인지를 위해 시험을 쳐봅시다~",
+			"date": "2022-01-25",
+			"startTime": "10:00:00",
+			"endTime": "12:00:00",
+			"pushReserveAt": [
+				"2022-01-25T09:00:00"
+			],
+			"order": 100,
+			"isHide": false,
+			"isCustom": false,
+			"status": 0,
+			"exam": {
+				"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+				"title": "수학의 정석 함수 시험 시리즈 1",
+				"createdAt": "2020-11-16T09:49:25.214Z",
+				"updatedAt": "2020-11-23T05:05:58.374Z"
+			},
+			"createdAt": "2020-11-16T09:49:25.214Z",
+			"updatedAt": "2020-11-23T05:05:58.374Z"
+		},
+		{
+			"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"originId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"userId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"curriculumId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"isEssential": true,
+			"title": "배치고사1-2",
+			"content": "다함께 메타인지를 위해 시험을 쳐봅시다~",
+			"date": "2022-01-25",
+			"startTime": "10:00:00",
+			"endTime": "12:00:00",
+			"pushReserveAt": [
+				"2022-01-25T09:00:00"
+			],
+			"order": 100,
+			"isHide": false,
+			"isCustom": false,
+			"status": 0,
+			"exam": {
+				"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+				"title": "수학의 정석 함수 시험 시리즈 1",
+				"createdAt": "2020-11-16T09:49:25.214Z",
+				"updatedAt": "2020-11-23T05:05:58.374Z"
+			},
+			"createdAt": "2020-11-16T09:49:25.214Z",
+			"updatedAt": "2020-11-23T05:05:58.374Z"
+		}
+	],
+	[],
+	[
+		{
+			"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"originId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"userId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"curriculumId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"isEssential": true,
+			"title": "배치고사3-1",
+			"content": "다함께 메타인지를 위해 시험을 쳐봅시다~",
+			"date": "2022-01-25",
+			"startTime": "10:00:00",
+			"endTime": "12:00:00",
+			"pushReserveAt": [
+				"2022-01-25T09:00:00"
+			],
+			"order": 100,
+			"isHide": false,
+			"isCustom": false,
+			"status": 0,
+			"exam": {
+				"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+				"title": "수학의 정석 함수 시험 시리즈 1",
+				"createdAt": "2020-11-16T09:49:25.214Z",
+				"updatedAt": "2020-11-23T05:05:58.374Z"
+			},
+			"createdAt": "2020-11-16T09:49:25.214Z",
+			"updatedAt": "2020-11-23T05:05:58.374Z"
+		},
+		{
+			"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"originId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"userId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"curriculumId": "24QbW0rfP04tIdUfReOcFxKaI7",
+			"isEssential": true,
+			"title": "배치고사3-2",
+			"content": "다함께 메타인지를 위해 시험을 쳐봅시다~",
+			"date": "2022-01-25",
+			"startTime": "10:00:00",
+			"endTime": "12:00:00",
+			"pushReserveAt": [
+				"2022-01-25T09:00:00"
+			],
+			"order": 100,
+			"isHide": false,
+			"isCustom": false,
+			"status": 0,
+			"exam": {
+				"id": "24QbW0rfP04tIdUfReOcFxKaI7",
+				"title": "수학의 정석 함수 시험 시리즈 1",
+				"createdAt": "2020-11-16T09:49:25.214Z",
+				"updatedAt": "2020-11-23T05:05:58.374Z"
+			},
+			"createdAt": "2020-11-16T09:49:25.214Z",
+			"updatedAt": "2020-11-23T05:05:58.374Z"
+		}
+	],
+	[],
+	[],
+	[],
+	[]
+]

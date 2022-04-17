@@ -24,15 +24,13 @@ export function LeftTab() {
 		<>
 			<div className="def-side">
 				<h1>
-					<Link to={{
-						pathname: `/home/day/${today}`,
-						state: {
+					<Link to={`/home/day/${today}`}
+						state={{
 							year: today.getFullYear(),
 							month: today.getMonth(),
 							date: today.getDate(),
 							day: today.getDay()
-						}
-					}} >
+						}}>
 						<span>
 							PATH
 						</span>

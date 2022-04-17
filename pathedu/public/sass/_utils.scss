@@ -2,6 +2,7 @@
 $breakpoints: (
 	mob: 480px,
 	tab: 768px,
+	wide: 1024px,
 
 );
 // Create mixin
@@ -56,17 +57,28 @@ $font-def: 'Noto Sans KR','Roboto','Droid Sans','Malgun Gothic','Helvetica','App
 		height: $size;
 	}
 	&::-webkit-scrollbar-thumb {
-		//visibility: hidden;
+		visibility: hidden;
 		background: $f-color;
 		border-radius: 10px;
 		border: 4px solid $b-color;
-		position: absolute;
+		//position: absolute;
 	}
 	&::-webkit-scrollbar-track {
-		//visibility: hidden;
-		background: $b-color;
-		outline: 1px solid rgba(0, 0, 0, 0.02);
-		position: absolute;
+		visibility: hidden;
+		background: transparent;
+		//outline: 1px solid rgba(0, 0, 0, 0.02);
+		//position: absolute;
+	}
+	&::-webkit-scrollbar-track-piece {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-button {
+		background: transparent;
+		width: $size;
+		height: $size;
+	}
+	&::-webkit-scrollbar-corner {
+		background: transparent;
 	}
 	&:hover {
 		&::-webkit-scrollbar-track,

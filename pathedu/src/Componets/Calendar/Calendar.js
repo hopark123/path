@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import { Head } from "./Head"
-import { Body } from './Body';
+import { Body } from './Body'
 import validator from 'validator'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 
 function setTodate(year, month, date) {
 	var res = new Date(year, month, date)
@@ -14,9 +14,16 @@ export function Calendar() {
 	var [year, setYear] = useState(today.getFullYear())
 	var [mon, setMon] = useState(today.getMonth())
 	var [date, setDate] = useState(today.getDate())
+	const navigate = useNavigate()
 
-	
-	const urlDay = useParams().dayid
+	let dayObj = useLocation().state
+	console.log(useLocation())
+	if (!dayObj) {
+		console.log("no dayObj")
+		dayObj = { year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() }
+	}
+	console.log(dayObj)
+	// const urlDay = useParams().dayid
 	const prevMon = (e) => {
 		e.preventDefault();
 		if (mon > 0) {
@@ -29,6 +36,18 @@ export function Calendar() {
 			setToday(setTodate(year - 1, 11, 1))
 		}
 		setDate(1)
+		const newDay = new Date(year, today, 1)
+		console.log(newDay)
+		navigate(`/home/day`,
+		{
+			state: {
+				year: newDay.getFullYear(),
+				month: newDay.getMonth(),
+				date: newDay.getDate(),
+				day: newDay.getDay()
+			}
+		}
+	)
 	}
 
 	const nextMon = (e) => {
@@ -58,19 +77,32 @@ export function Calendar() {
 		}
 		setDate(1)
 	}
+	// useEffect(() => {
+	// 	const newDays = new Date(dayObj.year, dayObj.month, dayObj.date)
+	// 	setToday(newDays)
+	// 	setYear(dayObj.year)
+	// 	setMon(dayObj.month)
+	// 	setDate(dayObj.date)
+	// }, [dayObj])
 
-	useEffect(() => {
-		const urlDays = new Date(urlDay)
-		if (validator.isDate(urlDays)) {
-			setToday(urlDays)
-		}
-	},[urlDay])
+	// useEffect(() => {
+	// 	// const urlDays = new Date(urlDay)
+	// 	// console.log(urlDays)
+	// 	console.log("canlendar UseEffect")
+	// 	const newDays = new Date(dayObj.year, dayObj.month, dayObj.date)
+	// 	// if (validator.isDate(urlDays)) {
+	// 		setToday(newDays)
+	// 		setYear(dayObj.year)
+	// 		setMon(dayObj.month)
+	// 		setDate(dayObj.date)
+	// },[dayObj])
 
-	useEffect(() => {
-		setYear(today.getFullYear())
-		setMon(today.getMonth())
-		setDate(today.getDate())
-	}, [today])
+	// useEffect(() => {
+	// 	setYear(today.getFullYear())
+	// 	setMon(today.getMonth())
+	// 	setDate(today.getDate())
+	// 	console.log(today)
+	// }, [today])
 
 	return (
 		<div className="date-cho">

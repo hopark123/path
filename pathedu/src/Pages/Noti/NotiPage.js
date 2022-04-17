@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { CommentList, CreateComment } from "../../Componets/Comment"
 import { Attachment, AttachImag } from "../../Componets/Attachment"
 import { NotiListOne } from "./NotiListOne"
-async function NotiListGet({ myaccessToken }) {
+
+async function GetNotiList({ myaccessToken }) {
 	return fetch('https://www.mecallapi.com/api/auth/user', {
 		method: 'GET',
 		headers: {
@@ -33,7 +34,7 @@ function NotiAttach(props) {
 
 const NotiList = async () => {
 	const myaccessToken = localStorage.getItem("accessToken");
-	// const response = await NotiListGet({myaccessToken})
+	// const response = await GetNotiList({myaccessToken})
 	// console.log (noticelist)
 	return (
 		<>

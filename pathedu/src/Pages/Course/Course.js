@@ -23,12 +23,10 @@ function CourseThumNail(props) {
 	return (
 		<>
 			<li>
-				<Link to={{
-					pathname: `${courseid}`,
-					state: {
+				<Link to={`${courseid}`}
+					state={{
 						course: course
-					}
-				}}>
+					}}>
 					<span className="new">NEW!</span>
 					<div className="photo">
 						<img src={`${thumbnail}`} alt="" />

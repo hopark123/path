@@ -24,7 +24,7 @@ return (
 				<Route path="day" element={<ClassDayPage />}/>
 				<Route path="day/:dayid" element={<ClassDayPage />}/>
 				<Route path="todo/:todoid" element={<TodoDetail />}/>
-				<Route path="week" element={<ClassWeekPage />}/>
+				<Route path="week/:dayid" element={<ClassWeekPage />}/>
 				<Route path="noti" element={<NotiPage />}/>
 				<Route path="noti/:id" element={<NotiDetail />}/>
 				<Route path="course" element={<CoursePage />}/>

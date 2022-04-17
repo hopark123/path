@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useAsync } from "react-async"
 import { TodoToday } from "./TodoToday"
@@ -7,27 +8,46 @@ import { TodoRate } from "./TodoRate"
 
 
 export function ClassDayPage() {
-	// const {days, loading} = useAsync({promiseFn : useLocation()})
-	const kk = useLocation()
-	const days = useLocation().state
-	console.log(days)
-	console.log(kk)
-
+	// const {dayObj, loading} = useAsync({promiseFn : useLocation()})
+	let dayObj = useLocation().state
 	const navigate = useNavigate()
+	const today = new Date()
+	if (!dayObj) {
+		console.log("no dayObj")
+		dayObj = { year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() }
+	}
+	let days = new Date(dayObj.year, dayObj.month, dayObj.date)
+	
 	const prevDay = (e) => {
 		e.preventDefault()
-		const newDay = new Date(days.year, days.month, days.date - 1)
-		navigate(`/home/day/${newDay}`,
+		const newDay = new Date(dayObj.year, dayObj.month, dayObj.date - 1)
+		navigate(`/home/day`,
+			{
+				state: {
+					year: newDay.getFullYear(),
+					month: newDay.getMonth(),
+					date: newDay.getDate(),
+					day: newDay.getDay()
+				}
+			}
 		)
 	}
 	const nextDay = (e) => {
 		e.preventDefault()
-		const newDay = new Date(days.year, days.month, days.date + 1)
-		navigate(`/home/day/${newDay}`,
+		const newDay = new Date(dayObj.year, dayObj.month, dayObj.date + 1)
+		navigate(`/home/day/`,
+			{
+				state: {
+					year: newDay.getFullYear(),
+					month: newDay.getMonth(),
+					date: newDay.getDate(),
+					day: newDay.getDay()
+				}
+			}
 		)
 	}
 
-	if (days) {
+	if (dayObj) {
 		return (
 			<>
 				<main id="snContent" className="class-w">
@@ -35,19 +55,30 @@ export function ClassDayPage() {
 						<div className="class-top">
 							<p><em>5</em>명이 함께 공부중</p>
 							<div className="day-ctr">
-								<strong>{days.month + 1}월 {days.date}일</strong>
-								<Link to="/home/day/">
-									<button type="button" className="prev" onClick={prevDay}><span>어제</span></button>
-								</Link>
-								<Link to="/home/day/">
+								<strong>{dayObj.month + 1}월 {dayObj.date}일</strong>
+								<button type="button" className="prev" onClick={prevDay}><span>어제</span></button>
 								<button type="button" className="next" onClick={nextDay}><span>내일</span></button>
-								</Link>
 							</div>
 							<div className="cho-wd">
-								<Link to="/home/day/" className='selected'>
+								<Link to={`/home/day/${days}`}
+									state={{
+										year: dayObj.year,
+										month: dayObj.month,
+										date: dayObj.date,
+										day: dayObj.day
+									}}
+									className='selected'
+								>
 									일
 								</Link>
-								<Link to="/home/week/">
+								<Link to={`/home/week/${days}`}
+									state={{
+										year: dayObj.year,
+										month: dayObj.month,
+										date: dayObj.date,
+										day: dayObj.day
+									}}
+								>
 									주
 								</Link>
 							</div>
@@ -66,9 +97,8 @@ export function ClassDayPage() {
 	}
 	else {
 		console.log("loading")
-		console.log(days)
 		return (
 			"Loading..."
 		)
-		}
+	}
 }

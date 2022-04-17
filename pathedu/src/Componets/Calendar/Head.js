@@ -7,8 +7,8 @@ export function Head(props) {
 	const date = today.getDate()
 	
 	const clickToday = (e) => {
-		var today = new Date()
 		e.preventDefault();
+		var today = new Date()
 		setToday(today)
 	}
 

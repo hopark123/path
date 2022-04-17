@@ -29,13 +29,13 @@
 							<li class="email">
 								<label for="eMail">이메일</label>
 								<input type="text" id="eMail" placeholder="이메일" />
-								<button type="button">중복확인</button>
+								<!-- [0410] 중복확인 버튼 삭제 -->
 								<p class="desc">사용할 수 있는 이메일입니다.</p>
 							</li>
 							<li class="email">
 								<label for="eMail">이메일</label>
 								<input type="text" id="eMail" placeholder="이메일" />
-								<button type="button" disabled="disabled">중복확인</button>
+								<!-- [0410] 중복확인 버튼 삭제 -->
 								<p class="err">이메일 형태로 입력해주세요.</p>
 							</li>
 							<li>
@@ -51,10 +51,14 @@
 								<p class="err">비밀번호가 일치하지 않습니다.</p>
 							</li>
 						</ul>
+						<!-- [0410] 마크업 전체 변경 -->
 						<div class="agree">
-							<p><input type="checkbox" id="agr1" /><label for="agr1">이용약관 및 개인정보처리방침에 동의합니다.</label></p>
-							<p><input type="checkbox" id="agr2" /><label for="agr2">서비스 정보 및 혜택 수신에 동의합니다. (선택)</label></p>
+							<p class="all"><input type="checkbox" id="all" /><label for="all">모두 동의합니다.</label></p>
+							<p><input type="checkbox" id="agr1" /><label for="agr1"><a href="#">이용약관</a> 동의 (필수)</label></p>
+							<p><input type="checkbox" id="agr2" /><label for="agr2"><a href="#">개인정보처리방침</a> 및 개인정보 제3자 제공 동의 (필수)</label></p>
+							<p><input type="checkbox" id="agr3" /><label for="agr3">입시, 신규 클래스 알림 등 정보 수신 및 활용 동의 (선택)</p>
 						</div>
+						<!-- //[0410] 마크업 전체 변경 -->
 						<button type="button" class="btn-def">다음</button>
 					</fieldset>
 					<div class="sch">
@@ -70,6 +74,7 @@
 						<li><a href="#">회사소개</a></li>
 						<li><a href="#">이용약관</a></li>
 						<li><a href="#">개인정보처리방침</a></li>
+						<li><a href="#">청소년보호정책</a></li><!-- [0410] 내용추가 -->
 						<li><a href="#">고객센터</a></li>
 					</ul>
 				</nav>
@@ -80,10 +85,16 @@
 					</div>
 					<div>
 						<span>사업자등록번호 798-87-02289</span>
-						<span>고객센터 02-566-8982</span>
+						<span>문의 02-566-8982</span>
 					</div>
 				</div>
 				<address>서울특별시 강남구 선릉로 305 한티KR타워 8층</address>
+				<!-- [0410] 내용추가 -->
+				<div class="info">
+					<span>통신판매번호 : 2003-서울서초-03638</span>
+					<span>개인정보보호책임자 김인태(privacy@path.how)</span>
+				</div>
+				<!-- //[0410] 내용추가 -->
 				<p>Copyright © 2022 PATH inc, ltd. All rights reserved.</p>
 			</footer>
 		</div>

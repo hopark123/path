@@ -19,12 +19,10 @@ function TodoOne(props) {
 	return (
 		<>
 			<div className="todo-card">
-				<Link to={{
-					pathname: `/home/todo/${id}`,
-					state: {
+				<Link to={`/home/todo/${id}`}
+					state={{
 						todo: "a" //TODO
-					}
-				}}>
+					}}>
 					<div className="info">
 						<div className="cate">
 							<span className="c-mi">미션</span>
@@ -83,32 +81,3 @@ export function TodoToday(props) {
 		)
 	return null
 }
-
-
-/*
-{
-	  "id": 1,
-	  "originId": 1,
-	  "userId": 1,
-	  "curriculumId": 1,
-	  "isEssential": true,
-	  "title": "배치고사",
-	  "content": "다함께 메타인지를 위해 시험을 쳐봅시다~"
-	  "date": "2022-01-25",
-	  "startTime": "10:00:00",
-	  "endTime": "12:00:00",
-	  "pushReserveAt": ["2022-01-25T09:00:00"],
-	  "order": 100,
-	  "isHide": false,
-	  "isCustom": false,
-	  "status": 0,
-	  "exam": {
-		  "id": 8,
-		  "title": "수학의 정석 함수 시험 시리즈 1",
-			"createdAt": "2020-11-16T09:49:25.214Z",
-			"updatedAt": "2020-11-23T05:05:58.374Z",
-	  },
-	  "createdAt": "2020-11-16T09:49:25.214Z",
-	  "updatedAt": "2020-11-23T05:05:58.374Z",
-}
-*/
