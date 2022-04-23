@@ -36,7 +36,7 @@ export function ClassWeekPage() {
 	const prevWeek = (e) => {
 		e.preventDefault()
 		const newDay = new Date(dayObj.year, dayObj.month, dayObj.date -7)
-		navigate(`/home/week/${newDay}`,
+		navigate(`/home/week/`,
 			{
 				state: {
 					year: newDay.getFullYear(),
@@ -51,7 +51,7 @@ export function ClassWeekPage() {
 		e.preventDefault()
 		const newDay = new Date(dayObj.year, dayObj.month, dayObj.date + 7)
 		console.log("click")
-		navigate(`/home/week/${newDay}`,
+		navigate(`/home/week`,
 			{
 				state: {
 					year: newDay.getFullYear(),
@@ -74,7 +74,7 @@ export function ClassWeekPage() {
 							<button type="button" className="next" onClick={nextWeek} ><span>내일</span></button>
 						</div>
 						<div className="cho-wd">
-							<Link to={`/home/day/${days}`}
+							<Link to={`/home/day`}
 								state={{
 									year: dayObj.year,
 									month: dayObj.month,
@@ -84,7 +84,7 @@ export function ClassWeekPage() {
 							>
 								일
 							</Link>
-							<Link to={`/home/week/${days}`}
+							<Link to={`/home/week`}
 								state={{
 									year: dayObj.year,
 									month: dayObj.month,

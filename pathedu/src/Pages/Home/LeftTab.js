@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'
-import { ProfileModal } from '../Profile/ProfileModal';
+import { MyPage } from '../MyPage/MyPage';
 import { Calendar } from '../../Componets/Calendar';
 export function LeftTab() {
 	const [openProfile, setOpenProfile] = useState(false);
@@ -78,7 +78,7 @@ export function LeftTab() {
 							설정
 						</span>
 					</Link>
-					<ProfileModal openProfile={openProfile} setOpenProfile={setOpenProfile} />
+					<MyPage openProfile={openProfile} setOpenProfile={setOpenProfile} />
 					<a href="#" className="sett"><span>설정</span></a>
 				</div>
 			</div>

@@ -60,7 +60,7 @@ export function ClassDayPage() {
 								<button type="button" className="next" onClick={nextDay}><span>내일</span></button>
 							</div>
 							<div className="cho-wd">
-								<Link to={`/home/day/${days}`}
+								<Link to={`/home/day`}
 									state={{
 										year: dayObj.year,
 										month: dayObj.month,
@@ -71,7 +71,7 @@ export function ClassDayPage() {
 								>
 									일
 								</Link>
-								<Link to={`/home/week/${days}`}
+								<Link to={`/home/week`}
 									state={{
 										year: dayObj.year,
 										month: dayObj.month,
