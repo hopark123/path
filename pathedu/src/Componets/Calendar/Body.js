@@ -151,7 +151,10 @@ export function Body(props) {
 	let dayObj = useLocation().state
 	const today = new Date()
 	if (!dayObj) {
-		console.log("no dayObj")
+		dayObj = { year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() }
+	}
+	if (dayObj && !dayObj.year) {
+		console.log(dayObj)
 		dayObj = { year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() }
 	}
 	let days = ["일", "월", "화", "수", "목", "금", "토"]

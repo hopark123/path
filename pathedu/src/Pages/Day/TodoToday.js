@@ -14,15 +14,18 @@ async function getTodo({ myaccessToken }) {
 }
 
 function TodoOne(props) {
-	const id = props.Todo.id
-	const content = props.Todo.content
+	const { Todo } = props
+	const id = Todo.id
+	const content = Todo.content
+	console.log(props)
 	return (
 		<>
 			<div className="todo-card">
 				<Link to={`/home/todo/${id}`}
 					state={{
-						todo: "a" //TODO
-					}}>
+						task: {Todo} //TODO
+					}}
+					>
 					<div className="info">
 						<div className="cate">
 							<span className="c-mi">미션</span>
@@ -63,6 +66,7 @@ const TodoList = async () => {
 }
 export function TodoToday(props) {
 	const { data, error, isLoading } = useAsync({ promiseFn: TodoList })
+	const { dayObj } = props
 	// const today = useParams()
 	// console.log(today)
 	if (isLoading)

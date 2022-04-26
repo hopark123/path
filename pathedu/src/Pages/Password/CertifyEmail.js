@@ -55,6 +55,8 @@ export function CertifyEmail({ setPage }) {
 		}
 		else {
 			setCertifyOk(false);
+			console.log("1입력")
+
 		}
 	}
 	return (
@@ -78,11 +80,13 @@ export function CertifyEmail({ setPage }) {
 					<button type="button" className="btn-def" onClick={pageChange}>다음</button>
 				</form>
 				<div className="sch">
-				<Link to="/Login">
-					로그인으로 이동
-				</Link>
-			</div>
-		</fieldset>
+					<Link to="/Login">
+						로그인으로 이동
+					</Link>
+				</div>
+			</fieldset>
 		</>
 	);
 }
+
+

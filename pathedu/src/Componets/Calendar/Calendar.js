@@ -13,7 +13,9 @@ export function Calendar() {
 	const today = new Date()
 	let dayObj = useLocation().state
 	if (!dayObj) {
-		console.log("no dayObj")
+		dayObj = { year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() }
+	}
+	if (dayObj&& !dayObj.year) {
 		dayObj = { year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), day: today.getDay() }
 	}
 

@@ -23,7 +23,6 @@ return (
 				<Route index element={<ClassDayPage />}/>
 				<Route path="day" element={<ClassDayPage />}/>
 				<Route path="week" element={<ClassWeekPage />}/>
-				
 				{/* <Route path="day/:dayid" element={<ClassDayPage />}/> */}
 				<Route path="todo/:todoid" element={<TodoDetail />}/>
 				<Route path="noti" element={<NotiPage />}/>

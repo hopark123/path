@@ -24,8 +24,6 @@ export function RegistPages() {
 	});
 	console.log(profile)
 	const dispatch = useDispatch();
-	const onReduxForm = profile => dispatch(reduxForm(profile));
-
 	const makeProfile = (e) => {
 		e.preventDefault();
 		const { name, value } = e.target;

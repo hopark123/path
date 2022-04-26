@@ -11,9 +11,9 @@ export function PasswordPage() {
 	return (
 		<>
 			<div className="wrapper bg-join">
+				<LayoutLoginHead />
 				<main id="snContent">
 					<div className="login-join">
-						<LayoutLoginHead />
 						<h1><span>PATH</span></h1>
 						<h2>비밀번호 재설정</h2>
 						<br /><LayoutLoginHead /><br />

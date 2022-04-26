@@ -1,3 +1,10 @@
 import { MyPage } from "./MyPage"
-
-export { MyPage };
+import { ChangePassword } from "./ChangePassword"
+import { Consent } from "./Consent"
+import { EditProfile } from "./EditProfile"
+import { Terms } from "./Terms"
+import { Service} from "./Service"
+import { Policy } from "./Policy"
+import { Body } from "./Body"
+import {DefProfile} from "./DefProfile"
+export { MyPage, ChangePassword, Consent, EditProfile, Terms, Service, Policy, Body, DefProfile };

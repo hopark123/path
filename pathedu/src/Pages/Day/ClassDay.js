@@ -86,9 +86,9 @@ export function ClassDayPage() {
 					</div>
 					<div className="class-inner">
 						<div className='day-cnts'>
-							<TodoToday />
-							<TodoDone />
-							<TodoRate />
+							<TodoToday dayObj={dayObj}/>
+							<TodoDone dayObj={dayObj}/>
+							<TodoRate dayObj={dayObj}/>
 						</div>
 					</div>
 				</main>

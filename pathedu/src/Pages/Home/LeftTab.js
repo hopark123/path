@@ -2,29 +2,17 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'
 import { MyPage } from '../MyPage/MyPage';
 import { Calendar } from '../../Componets/Calendar';
+
+
+
 export function LeftTab() {
 	const [openProfile, setOpenProfile] = useState(false);
 	const today = new Date()
-	const navigate = useNavigate();
-
-	const onPath = (e) => {
-		e.preventDefault()
-		navigate(`/home/day/${today}`,
-			{
-				state: {
-					year: today.getFullYear(),
-					month: today.getMonth(),
-					date: today.getDate(),
-					day: today.getDay(),
-				}
-			})
-	}
-
 	return (
 		<>
 			<div className="def-side">
 				<h1>
-					<Link to={`/home/day/${today}`}
+					<Link to={`/home`}
 						state={{
 							year: today.getFullYear(),
 							month: today.getMonth(),
@@ -78,8 +66,7 @@ export function LeftTab() {
 							설정
 						</span>
 					</Link>
-					<MyPage openProfile={openProfile} setOpenProfile={setOpenProfile} />
-					<a href="#" className="sett"><span>설정</span></a>
+					{openProfile && (<MyPage openProfile={openProfile} setOpenProfile={setOpenProfile} />)}
 				</div>
 			</div>
 		</>

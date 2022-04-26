@@ -3,29 +3,13 @@ import { NavLink, Route, Link, Routes, Outlet } from 'react-router-dom'
 import { LeftTab } from "./LeftTab"
 import Modal from 'react-modal';
 
-// export function MainModal({ open, setOpen }) {
-// 	const modalOpen = (e) => {
-// 		e.preventDefault();
-// 		setOpen(false)
-// 	}
-// 	const myName = localStorage.getItem("accessToken")
-// 	return (
-// 		<>
-// 			<Modal isOpen={open} ariaHideApp={false} name="modal">
-// 				accessToken : {myName} <br />
-// 				<input type="button" value="네 알겠어요!" onClick={modalOpen} name="x" /><br />
-// 			</Modal>
-// 		</>
-// 	)
-// }
-
 
 export function Home() {
 	return (
 		<>
 			<div className='wrapper'>
 				<div id="skipNav">
-					<a href="#snContent">본문바로가기</a>
+					<a href="#">본문바로가기</a>
 				</div>
 				<hr />
 				<div className="mobile-m">

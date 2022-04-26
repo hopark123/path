@@ -1,0 +1,30 @@
+{
+	"completedTodo": [
+		{
+			"id": 1,
+			"title": "[선택][복습노트] 그래프와 활용 (1)",
+					"startTime": "11:00",
+					"endTime": "15:00",
+			"type": "MISSION",
+			"isImportant": false,
+			"isExpired": true
+		},
+		{
+			"id": 2,
+			"title": "[LIVE] 그래프와 활용 2강 - 삼차, 사차 함수 그래프의 특징",
+					"startTime": "19:00",
+			"type": "LIVE",
+			"isImportant": true,
+			"isExpired": false
+		}
+  ],
+	"uncompletedTodo": [
+		{
+			"id": 3,
+			"title": "비문학 독해 - 심화 (1)",
+			"type": "LECTURE",
+			"isImportant": false,
+			"isExpired": false
+		}
+	]
+}
