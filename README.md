@@ -1,6 +1,7 @@
 <p>
 <img src= "https://github.com/hopark123/path/issues/1">
-<p>
+</p>
+
 ## 😀 프로젝트 소개
 회사 path와 협업하여 프론트엔드 개발자로 교육 사이트 만들기
 
