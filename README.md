@@ -1,5 +1,5 @@
 <p>
-<img src= "https://github.com/hopark123/path/issues/1">
+<img src= "https://user-images.githubusercontent.com/67721631/177267482-77167076-456d-4af2-bb59-0ebdb1176d65.gif">
 </p>
 
 ## 😀 프로젝트 소개
